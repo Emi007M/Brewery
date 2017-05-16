@@ -1,0 +1,38 @@
+﻿<!--NOT USED-->
+
+@using BreweryService.Models
+@using BreweryWebApp.ViewComponents
+
+@model IEnumerable<Beer>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Generated costs</th>
+            <th>Generated profit</th>
+            <th>Balance</th>
+            <th>Average profit / bottle</th>
+        </tr>
+    </thead>
+
+    @foreach (var beer in Model)
+    {
+        if (beer.InProduction)
+        {
+            <tr>
+                <td>@beer.Type</td>
+                <td>@beer.Cost &dollar;</td>
+                <td><u>@beer.Price &dollar;</u></td>
+                <td>@beer.Amount</td>
+                <td>@beer.ProductionDaily</td>
+
+            </tr>
+        }
+
+    }
+
+</table>
+
+   

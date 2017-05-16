@@ -1,0 +1,15 @@
+﻿@using BreweryService.Models
+@using BreweryWebApp.ViewComponents
+
+@model IEnumerable<Beer>
+
+@{
+    ViewData["Title"] = "Sth!!";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+<p>@ViewData["Beers"]</p>
+<p>Use this area to provide additional information.</p>
+<div>
+    @await Component.InvokeAsync(nameof(BeerList), new { amount = 99 })
+</div>

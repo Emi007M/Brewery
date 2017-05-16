@@ -1,0 +1,13 @@
+﻿@using BreweryService.Models
+@using BreweryWebApp.ViewComponents
+
+@model IEnumerable<Beer>
+
+Default
+<h3>Beers</h3>
+<ul>
+    @foreach (var beer in Model)
+    {
+        <li>@beer.Type</li>
+    }
+</ul>

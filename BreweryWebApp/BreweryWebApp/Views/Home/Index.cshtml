@@ -1,0 +1,46 @@
+﻿@using BreweryService.Models
+@using BreweryWebApp.ViewComponents
+
+@model IEnumerable<Beer>
+@{
+    ViewData["Title"] = "Brewery Management Application";
+    var money = await BeerList.GetOverallMoneyAsync();
+    var balance = money.Balance;
+}
+
+
+<div class="container">
+
+    <h1 class="text-center">@ViewData["Title"]</h1>
+
+
+    <div class="row text-center">
+
+        <h3 class="text-center">Current money balance: <strong>@balance$</strong></h3>
+
+    </div>
+    <div class="row">
+
+        <h2>Production</h2>
+        <button class="btn btn-primary btn-sm" style="margin-bottom: 2em;"><i class="fa fa-plus"></i> Add new type of beer to the production</button>
+
+        <div id="production">
+            @await Component.InvokeAsync(nameof(BeerList))
+        </div>
+
+        <input id="productionBtn" type="button" value="Call daily production" class="btn btn-success" />
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#productionBtn').click(function () {
+            $.get("/Home/InvokeProduction", function (data) {
+                $("#production").html(data);
+            });
+       
+        });
+    });
+</script>
+
