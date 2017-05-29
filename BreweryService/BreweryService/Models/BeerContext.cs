@@ -8,12 +8,23 @@ namespace BreweryService.Models
 {
     public class BeerContext : DbContext
     {
+
+
+
         public BeerContext(DbContextOptions<BeerContext> options)
             : base(options)
         {
+            Orders = new Orders(this);
+            Clients = new Clients();
         }
 
         public DbSet<Beer> Beers { get; set; }
+
+        public Orders Orders { get; set; }
+        public Clients Clients { get; set; }
+
+
+
 
         public float GetOverallOutcome()
         {

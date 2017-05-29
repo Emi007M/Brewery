@@ -13,19 +13,21 @@ namespace BreweryWebApp.ViewComponents
     public class BeerList : ViewComponent
     {
 
-        
+
         public BeerList()
         {
-            
+
         }
 
         public async Task<IViewComponentResult> InvokeAsync(int i)
         {
             if (i == 1) await InvokeProduction();
+            else if (i == 2) await AddNewBeerType();
+
             var items = await GetItemsAsync();
             return View("ProductionTable", items);
         }
-       
+
         public static async Task<List<Beer>> GetItemsAsync()
         {
 
@@ -36,7 +38,7 @@ namespace BreweryWebApp.ViewComponents
                 dynamic beers = JsonConvert.DeserializeObject<List<Beer>>(stringResponse);
                 return beers;
             }
-        
+
         }
 
         public static async Task<float> GetBalanceAsync()
@@ -71,5 +73,26 @@ namespace BreweryWebApp.ViewComponents
             }
 
         }
+
+        public static async Task<OverallMoney> AddNewBeerType() //nie działa. sam post wysłany z postmana działa, a tu nic się nie robi
+        {
+
+            var apiRequestUri = new Uri("http://localhost:65320/api/beer");
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync(apiRequestUri, null);
+                var responseString = await response.Content.ReadAsStringAsync();
+                dynamic beer = JsonConvert.DeserializeObject<Beer>(responseString);
+                return beer;
+            }
+
+
+        }
+
+
+
     }
 }
+
+  

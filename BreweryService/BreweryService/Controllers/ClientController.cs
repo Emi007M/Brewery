@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BreweryService.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ClientController : Controller
     {
         // GET api/client
         [HttpGet]

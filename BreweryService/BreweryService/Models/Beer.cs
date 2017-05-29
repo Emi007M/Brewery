@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BreweryService.Models
 {
+
     public class Beer
     {
         [Key]
@@ -19,7 +20,7 @@ namespace BreweryService.Models
         /// </summary>
         public float Cost { get; set; }
         /// <summary>
-        /// Wholesale proce of a single bottle
+        /// Wholesale price of a single bottle
         /// </summary>
         public float Price { get; set; }
         /// <summary>
@@ -31,6 +32,12 @@ namespace BreweryService.Models
         /// true if not removed from production
         /// </summary>
         public bool InProduction { get; set; }
+
+        public int ProducedBottles { get; private set; }
+        public float ProducedCosts { get; private set; }
+        public int SoldBottles { get; private set; }
+        public float SoldIncome { get; private set; }
+
 
         public Beer()
         {
@@ -51,11 +58,10 @@ namespace BreweryService.Models
         public void Produce()
         {
             ProducedBottles += ProductionDaily;
-            ProducedCosts += ProductionDaily * Cost;
+            ProducedCosts += (float)ProductionDaily * Cost;
             Amount += ProductionDaily;
         }
-        public int ProducedBottles { get; private set; }
-        public float ProducedCosts { get; private set; }
+       
 
         public bool Buy(int _amount, int _discount)
         {
@@ -69,13 +75,15 @@ namespace BreweryService.Models
 
             return true;
         }
-        public int SoldBottles { get; private set; }
-        public float SoldIncome { get; private set; }
+       
 
         public float GetBalance()
         {
             return SoldIncome - ProducedCosts;
         }
+
+
+
 
     }
 }

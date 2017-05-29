@@ -4,6 +4,18 @@ namespace BreweryService.Models
 {
     public class Order
     {
+
+        public Order(long beerId, long clientId, int amount, float price, int discount)
+        {
+            Date = System.DateTime.Now;
+            BeerId = beerId;
+            ClientId = clientId;
+            Amount = amount;
+            Price = price;
+            Discount = discount;
+            TotalPrice = Amount * Price * (float)(100 - Discount);
+
+        }
         public DateTime Date { get; set; }
         public long BeerId { get; set; }
         public long ClientId { get; set; }

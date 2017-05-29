@@ -1,0 +1,85 @@
+﻿@using BreweryService.Models
+@using BreweryWebApp.ViewComponents
+
+@model IEnumerable<Beer>
+
+<label>Name:</label><input type="text" value="client-name" />
+<label>Key:</label><input type="text" value="client-password" disabled="disabled" />
+<label>Personal discounts:</label> xyz
+<label>Orders' data:</label>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Orders amount (2)</th>
+            <th>Sum of ordered bottles (3)</th>
+            <th>Av. order size (4=3/2)</th>
+            <th>Av income / bottle (5)</th>
+            <th>Whole income (6=3*5)</th>
+            <th>Av. profit / bottle (7=income-outcome)</th>
+            <th>Whole profit (8=3*7)</th>
+        </tr>
+    </thead>
+
+    @foreach (var beer in Model)
+    {
+        if (beer.InProduction)
+        {
+            <tr>
+                <td>t</td>
+                <td>o</td>
+                <td>s</td>
+                <td>a</td>
+                <td> $</td>
+                <td> $</td>
+                <td> $</td>
+                <td> $</td>
+
+            </tr>
+        }
+
+    }
+
+</table>
+
+
+
+
+<label>Sale statistics (refreshed daily):</label>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>In stock</th>
+            <th>Av. daily sale</th>
+            <th>Sold yesterday</th>
+            <th>Sold in last 7 days</th>
+            <th>Sold in last 28 days</th>
+            <th>Sold in total</th>
+        </tr>
+    </thead>
+
+    @foreach (var beer in Model)
+    {
+        if (beer.InProduction)
+        {
+            <tr>
+                <td>t</td>
+                <td>o</td>
+                <td>s</td>
+                <td>a</td>
+                <td> $</td>
+                <td> $</td>
+                <td> $</td>
+
+            </tr>
+        }
+
+    }
+
+</table>
+
+   

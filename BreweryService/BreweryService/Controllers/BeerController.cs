@@ -46,7 +46,8 @@ namespace BreweryService.Controllers
         {
             if (item == null)
             {
-                return BadRequest();
+                item = new Beer();
+                //return BadRequest();
             }
 
             _beerRepository.Add(item);

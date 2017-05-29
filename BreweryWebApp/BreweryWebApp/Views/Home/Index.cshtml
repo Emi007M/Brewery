@@ -4,8 +4,9 @@
 @model IEnumerable<Beer>
 @{
     ViewData["Title"] = "Brewery Management Application";
-    var money = await BeerList.GetOverallMoneyAsync();
-    var balance = money.Balance;
+    //var money = await BeerList.GetOverallMoneyAsync();
+    //var balance = money.Balance;
+
 }
 
 
@@ -16,13 +17,13 @@
 
     <div class="row text-center">
 
-        <h3 class="text-center">Current money balance: <strong>@balance$</strong></h3>
-
+        @await Component.InvokeAsync(nameof(BeerOverall), new { amount = 99 })
+         
     </div>
     <div class="row">
 
         <h2>Production</h2>
-        <button class="btn btn-primary btn-sm" style="margin-bottom: 2em;"><i class="fa fa-plus"></i> Add new type of beer to the production</button>
+        <button id="newBeerBtn" class="btn btn-primary btn-sm" style="margin-bottom: 2em;"><i class="fa fa-plus"></i> Add new type of beer to the production</button>
 
         <div id="production">
             @await Component.InvokeAsync(nameof(BeerList))
@@ -35,6 +36,15 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $('#newBeerBtn').click(function () {
+            $.get("/Home/AddNewBeer", function (data) {
+                $("#production").html(data);
+            });
+
+        });
+      
+
         $('#productionBtn').click(function () {
             $.get("/Home/InvokeProduction", function (data) {
                 $("#production").html(data);

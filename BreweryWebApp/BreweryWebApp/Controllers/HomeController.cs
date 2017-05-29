@@ -47,9 +47,17 @@ namespace BreweryWebApp.Controllers
 
         public IActionResult InvokeProduction()
         {
-            
+
             return ViewComponent("BeerList", new { i = 1 });
-            
+
         }
+        public IActionResult AddNewBeer()
+        {
+
+            return ViewComponent("BeerList", new { i = 2 });
+
+        }
+
+
     }
 }

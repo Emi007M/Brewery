@@ -4,12 +4,15 @@
 @model IEnumerable<Beer>
 
 @{
-    ViewData["Title"] = "Sth!!";
+    var beers = await BeerList.GetItemsAsync();
+    var balance = await BeerList.GetOverallMoneyAsync();
+
+    ViewData["Title"] = "Orders todo";
 }
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 <p>@ViewData["Beers"]</p>
 <p>Use this area to provide additional information.</p>
 <div>
-    @await Component.InvokeAsync(nameof(BeerList), new { amount = 99 })
+    @await Component.InvokeAsync(nameof(OrderList), new { amount = 99 })
 </div>

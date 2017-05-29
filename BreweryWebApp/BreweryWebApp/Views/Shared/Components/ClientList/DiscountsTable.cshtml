@@ -1,0 +1,32 @@
+﻿@using BreweryService.Models
+@using BreweryWebApp.ViewComponents
+@model System.Collections.Specialized.NameValueCollection
+
+@*@model IEnumerable<Beer>*@
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Discount</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach(string key in Model.AllKeys){
+
+            <tr>
+                <td>@key</td>
+                <td>@Model[key] %</td>
+                <td>edit</td>
+
+            </tr>
+        }
+
+        }
+
+    </table>
+save
+
+
