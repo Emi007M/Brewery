@@ -1,9 +1,0 @@
-W:\Visual Projects\brewery\BreweryService\BreweryService\bin\Debug\netcoreapp1.1\BreweryService.deps.json
-W:\Visual Projects\brewery\BreweryService\BreweryService\bin\Debug\netcoreapp1.1\BreweryService.runtimeconfig.json
-W:\Visual Projects\brewery\BreweryService\BreweryService\bin\Debug\netcoreapp1.1\BreweryService.runtimeconfig.dev.json
-W:\Visual Projects\brewery\BreweryService\BreweryService\bin\Debug\netcoreapp1.1\BreweryService.dll
-W:\Visual Projects\brewery\BreweryService\BreweryService\bin\Debug\netcoreapp1.1\BreweryService.pdb
-W:\Visual Projects\brewery\BreweryService\BreweryService\obj\Debug\netcoreapp1.1\BreweryService.csprojResolveAssemblyReference.cache
-W:\Visual Projects\brewery\BreweryService\BreweryService\obj\Debug\netcoreapp1.1\BreweryService.AssemblyInfo.cs
-W:\Visual Projects\brewery\BreweryService\BreweryService\obj\Debug\netcoreapp1.1\BreweryService.dll
-W:\Visual Projects\brewery\BreweryService\BreweryService\obj\Debug\netcoreapp1.1\BreweryService.pdb
