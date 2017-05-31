@@ -20,10 +20,10 @@ namespace BreweryService.Models
             GlobalDiscounts = new Discounts();
             foreach(Client c in ClientsList)
             {
-                c.Discounts.per100 = GlobalDiscounts.per100;
-                c.Discounts.per250 = GlobalDiscounts.per250;
-                c.Discounts.per500 = GlobalDiscounts.per500;
-                c.Discounts.per1000= GlobalDiscounts.per1000;
+                c.Discounts.Per100 = GlobalDiscounts.Per100;
+                c.Discounts.Per250 = GlobalDiscounts.Per250;
+                c.Discounts.Per500 = GlobalDiscounts.Per500;
+                c.Discounts.Per1000= GlobalDiscounts.Per1000;
             }
         }
 

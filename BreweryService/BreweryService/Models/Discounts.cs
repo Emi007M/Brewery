@@ -2,51 +2,57 @@
 {
     public class Discounts
     {
+        private int _per100;
+        private int _per250;
+        private int _per500;
+        private int _per1000;
 
-        public int per100
+        public int Per100
         {
-            get { return per100; }
-            set { per100 = value; Recalculate(); }
+            get { return _per100; }
+            set { _per100 = value; Recalculate(); }
         }
-        public int per250
+
+        public int Per250
         {
-            get { return per250; }
-            set { per250 = value; Recalculate(); }
+            get { return _per250; }
+            set { _per250 = value; Recalculate(); }
         }
-        public int per500
+
+        public int Per500
         {
-            get { return per500; }
-            set { per500 = value; Recalculate(); }
+            get { return _per500; }
+            set { _per500 = value; Recalculate(); }
         }
-        public int per1000
+
+        public int Per1000
         {
-            get { return per1000; }
-            set { per1000 = value; Recalculate(); }
+            get { return _per1000; }
+            set { _per1000 = value; Recalculate(); }
         }
 
         public Discounts()
         {
-            per100 = 1;
-            per250 = 2;
-            per500 = 4;
-            per1000 = 5;
+            Per100 = 1;
+            Per250 = 2;
+            Per500 = 4;
+            Per1000 = 5;
         }
 
         public int GetDiscount(int amount)
         {
-            if (amount < 100)  return 0;
-            if (amount < 250)  return per100;
-            if (amount < 500)  return per250;
-            if (amount < 1000) return per500;
-            return per1000;
+            if (amount < 100) return 0;
+            if (amount < 250) return Per100;
+            if (amount < 500) return Per250;
+            if (amount < 1000) return Per500;
+            return Per1000;
         }
 
         private void Recalculate()
         {
-            if (per100 > per250) per250 = per100;
-            if (per250 > per500) per500 = per250;
-            if (per500 > per1000) per1000 = per500;
+            if (Per100 > Per250) Per250 = Per100;
+            if (Per250 > Per500) Per500 = Per250;
+            if (Per500 > Per1000) Per1000 = Per500;
         }
-        
     }
 }
