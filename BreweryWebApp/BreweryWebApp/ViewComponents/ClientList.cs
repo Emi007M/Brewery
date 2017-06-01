@@ -22,21 +22,38 @@ namespace BreweryWebApp.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(int i)
         {
           //  if (i == 1) await InvokeProduction();
-            var items = await GetItemsAsync();
-            return View("Default", items);
-        }
+            var client = await GetClientAsync(i);
+
        
-        public static async Task<List<Beer>> GetItemsAsync()
+            ViewData["orders"] = await GetOrdersAsync(i);
+
+            return View("Default", client);
+        }
+
+        public static async Task<Client> GetClientAsync(int i)
         {
 
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer");
+            var apiRequestUri = new Uri("http://localhost:65320/api/client/" + i);
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
-                dynamic beers = JsonConvert.DeserializeObject<List<Beer>>(stringResponse);
+                dynamic beers = JsonConvert.DeserializeObject<Client>(stringResponse);
                 return beers;
             }
-        
+
+        }
+
+        public static async Task<ClientOrders> GetOrdersAsync(int i)
+        {
+
+            var apiRequestUri = new Uri("http://localhost:65320/api/client/" + i + "/orders");
+            using (var client = new HttpClient())
+            {
+                var stringResponse = await client.GetStringAsync(apiRequestUri);
+                dynamic beers = JsonConvert.DeserializeObject<ClientOrders>(stringResponse);
+                return beers;
+            }
+
         }
 
         //public static async Task<float> GetBalanceAsync()

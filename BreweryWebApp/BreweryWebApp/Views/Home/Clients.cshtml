@@ -1,7 +1,7 @@
 ﻿@using BreweryService.Models
 @using BreweryWebApp.ViewComponents
 
-@model IEnumerable<Beer>
+@model IEnumerable<Client>
 
 @{
     var beers = await BeerList.GetItemsAsync();
@@ -16,6 +16,10 @@ add discounts table
 
 <h2>Customers' Data & Statistics</h2>
 
+@foreach (var client in Model)
+{
 <div>
-    @await Component.InvokeAsync(nameof(ClientList), new { amount = 99 })
+    @await Component.InvokeAsync(nameof(ClientList), new { amount = @client.Id })
 </div>
+
+}

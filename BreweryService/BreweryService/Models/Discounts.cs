@@ -1,4 +1,7 @@
-﻿namespace BreweryService.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BreweryService.Models
 {
     public class Discounts
     {
@@ -6,6 +9,24 @@
         private int _per250;
         private int _per500;
         private int _per1000;
+
+        public Discounts()
+        {
+            if(Client.GlobalDiscounts != null)
+            {
+                Per100 = Client.GlobalDiscounts.Per100;
+                Per250 = Client.GlobalDiscounts.Per250;
+                Per500 = Client.GlobalDiscounts.Per500;
+                Per1000 = Client.GlobalDiscounts.Per1000;
+            }
+            else
+            {
+                Per100 = 1;
+                Per250 = 2;
+                Per500 = 4;
+                Per1000 = 5;
+            }
+        }
 
         public int Per100
         {
@@ -31,13 +52,7 @@
             set { _per1000 = value; Recalculate(); }
         }
 
-        public Discounts()
-        {
-            Per100 = 1;
-            Per250 = 2;
-            Per500 = 4;
-            Per1000 = 5;
-        }
+ 
 
         public int GetDiscount(int amount)
         {
@@ -54,5 +69,9 @@
             if (Per250 > Per500) Per500 = Per250;
             if (Per500 > Per1000) Per1000 = Per500;
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
     }
 }

@@ -14,14 +14,14 @@ namespace BreweryService.Models
         public BeerContext(DbContextOptions<BeerContext> options)
             : base(options)
         {
-            Orders = new Orders(this);
-            Clients = new Clients();
+          //  Orders = new Orders(this);
+          //  Clients = new Clients();
         }
 
         public DbSet<Beer> Beers { get; set; }
 
-        public Orders Orders { get; set; }
-        public Clients Clients { get; set; }
+        public DbSet<Order>  Orders { get; set; }
+        public DbSet<Client>  Clients { get; set; }
 
 
 

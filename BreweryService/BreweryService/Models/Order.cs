@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BreweryService.Models
 {
@@ -32,6 +34,10 @@ namespace BreweryService.Models
         /// price*amount*(100-discount)/100f
         /// </summary>
         public float TotalPrice { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
     }
 }

@@ -26,15 +26,15 @@ namespace BreweryWebApp.ViewComponents
             return View("Default", items);
         }
        
-        public static async Task<List<Beer>> GetItemsAsync()
+        public static async Task<List<Order>> GetItemsAsync()
         {
 
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer");
+            var apiRequestUri = new Uri("http://localhost:65320/api/client/orders");
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
-                dynamic beers = JsonConvert.DeserializeObject<List<Beer>>(stringResponse);
-                return beers;
+                dynamic orders = JsonConvert.DeserializeObject<List<Order>>(stringResponse);
+                return orders;
             }
         
         }

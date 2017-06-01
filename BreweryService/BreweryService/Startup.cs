@@ -37,8 +37,11 @@ namespace BreweryService
 
             services.AddMvc();
 
-            services.AddScoped<IBeerRepository, BeerRepository>();
-            //services.AddSingleton<IBeerRepository, BeerRepository>();
+            // services.AddScoped<IBeerRepository, BeerRepository>();
+            services.AddSingleton<IBeerRepository, BeerRepository>();
+            services.AddSingleton<IClientRepository, ClientRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
+
 
         }
 

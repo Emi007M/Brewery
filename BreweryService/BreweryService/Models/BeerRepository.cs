@@ -39,11 +39,7 @@ namespace BreweryService.Models
 
                 
             }
-              //  Find(1).Produce();
-             //   Find(2).Produce();
-             //   Find(3).Produce();
-            //    Find(1).Produce();
-           // _context.SaveChanges();
+
         }
 
         public void Add(Beer item)
@@ -86,6 +82,9 @@ namespace BreweryService.Models
             _context.ProduceAll();
             _context.SaveChanges();
         }
+
+
+
 
         
     }

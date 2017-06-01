@@ -7,12 +7,15 @@ namespace BreweryService.Models
     public class Client
     {
 
-        public Client()
+        public Client(string name, string key)
         {
-            Name = "client_" + Id;
-            Key = "123QH" + Id;
+            Name = name;
+            Key = key;
             Discounts = new Discounts();
+
         }
+
+        public Client() { }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +27,8 @@ namespace BreweryService.Models
         /// </summary>
         public string Key { get; set; }
         public Discounts Discounts { get; set; }
+
+        public static Discounts GlobalDiscounts { get; set; }
 
     }
 }
