@@ -6,7 +6,7 @@ namespace BreweryService.Models
 {
     public class Order
     {
-
+        public Order() { }
         public Order(long beerId, long clientId, int amount, float price, int discount)
         {
             Date = System.DateTime.Now;

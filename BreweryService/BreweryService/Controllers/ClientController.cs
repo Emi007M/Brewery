@@ -15,9 +15,10 @@ namespace BreweryService.Controllers
         private readonly IClientRepository _clientRepository;
         private readonly IOrderRepository _orderRepository;
 
-        public ClientController(IClientRepository clientRepository)
+        public ClientController(IClientRepository clientRepository, IOrderRepository orderRepository)
         {
             _clientRepository = clientRepository;
+            _orderRepository = orderRepository;
         }
 
         //POST /api/client
@@ -61,7 +62,8 @@ namespace BreweryService.Controllers
         [HttpGet("{id}/orders", Name = "GetOrders")]
         public ClientOrders GetOrdersByClient(long id)
         {
-            return new ClientOrders(_orderRepository.GetAll().Where(o => o.ClientId == id));
+            IEnumerable<Order> orders = new List<Order>(_orderRepository.GetAll().Where(o => o.ClientId == id));
+            return new ClientOrders(orders);
 
 
         }

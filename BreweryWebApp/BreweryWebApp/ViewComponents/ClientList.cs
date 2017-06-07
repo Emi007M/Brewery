@@ -43,6 +43,19 @@ namespace BreweryWebApp.ViewComponents
 
         }
 
+        public static async Task<List<Client>> GetClientsAsync()
+        {
+
+            var apiRequestUri = new Uri("http://localhost:65320/api/client/");
+            using (var client = new HttpClient())
+            {
+                var stringResponse = await client.GetStringAsync(apiRequestUri);
+                dynamic beers = JsonConvert.DeserializeObject<List<Client>>(stringResponse);
+                return beers;
+            }
+
+        }
+
         public static async Task<ClientOrders> GetOrdersAsync(int i)
         {
 
@@ -51,6 +64,7 @@ namespace BreweryWebApp.ViewComponents
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
                 dynamic beers = JsonConvert.DeserializeObject<ClientOrders>(stringResponse);
+                if (beers.orders == null) beers.orders = new List<Order>();
                 return beers;
             }
 

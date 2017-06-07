@@ -7,8 +7,12 @@ namespace BreweryService.Models
 {
     public class ClientOrders
     {
-        IEnumerable<Order> orders;
+        public IEnumerable<Order> orders;
 
+        public ClientOrders()
+        {
+            orders = new List<Order>();
+        }
         public ClientOrders(IEnumerable<Order> _orders)
         {
             orders = _orders;

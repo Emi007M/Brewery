@@ -23,8 +23,20 @@ namespace BreweryService.Models
         public DbSet<Order>  Orders { get; set; }
         public DbSet<Client>  Clients { get; set; }
 
-
-
+        public OverallMoney Overall
+        {
+            get
+            {
+                return new OverallMoney
+                {
+                    Outcome = GetOverallOutcome(),
+                    Income = GetOverallIncome(),
+                    BottlesProduced = GetOverallBottlesProduced(),
+                    BottlesSold = GetOverallBottlesSold(),
+                    Balance = GetOverallBalance()
+                };
+            }
+        } 
 
         public float GetOverallOutcome()
         {

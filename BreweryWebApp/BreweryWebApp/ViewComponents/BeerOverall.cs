@@ -24,7 +24,7 @@ namespace BreweryWebApp.ViewComponents
             //  if (i == 1) await InvokeProduction();
             var items = await GetOverallMoneyAsync();
             //ViewData["balancex"] = await GetBalanceAsync();
-            ViewData["balancex"] = (float)items.Balance + 123; //nie działa, zwraca zero
+            ViewData["balancex"] = (float)items.Balance; //nie działa, zwraca zero
 
             return View("Default");
         }
@@ -52,7 +52,7 @@ namespace BreweryWebApp.ViewComponents
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
-                dynamic beers = JsonConvert.DeserializeObject<OverallMoney>(stringResponse);
+                OverallMoney beers = JsonConvert.DeserializeObject<OverallMoney>(stringResponse);
                 return beers;
             }
 

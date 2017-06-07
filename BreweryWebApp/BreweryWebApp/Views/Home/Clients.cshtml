@@ -7,6 +7,8 @@
     var beers = await BeerList.GetItemsAsync();
     var balance = await BeerList.GetOverallMoneyAsync();
 
+    var clients = await ClientList.GetClientsAsync();
+
     ViewData["Title"] = "Orders todo";
 
     ViewData["Title"] = "Contact";
@@ -16,10 +18,10 @@ add discounts table
 
 <h2>Customers' Data & Statistics</h2>
 
-@foreach (var client in Model)
+@foreach (var client in clients)
 {
 <div>
-    @await Component.InvokeAsync(nameof(ClientList), new { amount = @client.Id })
+    @await Component.InvokeAsync(nameof(ClientList), new { i = (int)@client.Id })
 </div>
 
 }

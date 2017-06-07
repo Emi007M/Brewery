@@ -73,7 +73,7 @@ namespace BreweryService.Models
 
         public OverallMoney GetOverallMoney()
         {
-            return new OverallMoney(_context);
+            return _context.Overall;
 
         }
 
