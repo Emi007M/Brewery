@@ -28,8 +28,14 @@ namespace BreweryService.Models
 
         public void Add(Order item)
         {
-            _context.Orders.Add(item);
-            _context.SaveChanges();
+            
+
+            if( _context.Beers.Find(item.BeerId).Buy(item.Amount, item.Discount))
+            {
+                _context.Orders.Add(item);
+                _context.SaveChanges();
+            }
+            
         }
 
         public void AddOrder(long beerId, long clientId, int amount)

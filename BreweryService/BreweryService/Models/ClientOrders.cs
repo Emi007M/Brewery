@@ -47,12 +47,12 @@ namespace BreweryService.Models
 
         public float getAvIncomeBottle(int type)
         {
-            return getIncome(type) / getOrdersAmount(type);
+            return getIncome(type) / getSumOfBottles(type);
         }
 
         public float getIncome(int type)
         {
-            return orders.Where(o => o.BeerId == type).Sum(o => o.Amount * o.TotalPrice);
+            return orders.Where(o => o.BeerId == type).Sum(o => o.TotalPrice);
         }
 
 

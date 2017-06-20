@@ -15,7 +15,7 @@ namespace BreweryService.Models
             Amount = amount;
             Price = price;
             Discount = discount;
-            TotalPrice = Amount * Price * (float)(100 - Discount);
+            TotalPrice = Amount * Price * (float)(100 - Discount)/100;
 
         }
         public DateTime Date { get; set; }

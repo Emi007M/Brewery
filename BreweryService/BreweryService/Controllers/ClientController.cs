@@ -96,6 +96,21 @@ namespace BreweryService.Controllers
             return CreatedAtRoute("GetClient", new { id = id });
         }
 
+        //POST /api/client/{id}/order
+        // dictionary: { "beerId": id, "amount": amount }
+        [HttpPost("{id}/order")]
+        public IActionResult UpdateInfo(long id, [FromBody] Dictionary<string,int> item)
+        {
+            //if (item == null)
+            //{
+            //    item = new List<ClientInfoFromShop>();
+            //    //return BadRequest();
+            //}
+            _orderRepository.AddOrder(item["beerId"], id, item["amount"]);
+            
+
+            return CreatedAtRoute("GetClient", new { id = id });
+        }
 
 
         // POST api/client
