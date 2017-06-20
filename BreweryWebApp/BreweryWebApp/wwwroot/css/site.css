@@ -35,3 +35,12 @@ textarea {
         display: none;
     }
 }
+
+
+.tab-content {
+    border: 1px solid #ddd;
+    border-top: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2em 1em;
+}

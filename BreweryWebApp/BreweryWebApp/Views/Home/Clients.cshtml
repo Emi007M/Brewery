@@ -18,10 +18,22 @@ add discounts table
 
 <h2>Customers' Data & Statistics</h2>
 
+<ul class="nav nav-tabs">
 @foreach (var client in clients)
 {
-<div>
-    @await Component.InvokeAsync(nameof(ClientList), new { i = (int)@client.Id })
-</div>
-
+    <li><a data-toggle="tab" href="#c@(client.Id)">@client.Name</a></li>
 }
+    
+</ul>
+
+<div class="tab-content">
+    
+
+    @foreach (var client in clients)
+    {
+        <div id="c@(client.Id)" class="tab-pane fade">
+            @await Component.InvokeAsync(nameof(ClientList), new { i = (int)@client.Id })
+        </div>
+
+    }
+</div>
