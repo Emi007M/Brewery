@@ -58,6 +58,14 @@ namespace BreweryService.Models
             _context.SaveChanges();
         }
 
+        public bool IsKeyClientValid(long clientId, string key)
+        {
+            if (_context.Clients.Find(clientId).Key.Equals(key))
+                return true;
+            else
+                return false;
+        }
+
         //public OverallMoney GetOverallMoney()
         //{
         //    return new OverallMoney(_context);

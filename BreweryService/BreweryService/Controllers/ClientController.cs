@@ -85,6 +85,7 @@ namespace BreweryService.Controllers
         [HttpPost("{id}/info")]
         public IActionResult UpdateInfo(long id, [FromBody] List<ClientInfoFromShop> item)
         {
+
             if (item == null)
             {
                 item = new List<ClientInfoFromShop>();
@@ -97,22 +98,21 @@ namespace BreweryService.Controllers
         }
 
         //POST /api/client/{id}/order
-        // dictionary: { "beerId": id, "amount": amount }
+        // dictionary: { "beerId": id, "amount": amount, "key": password }
         [HttpPost("{id}/order")]
-        public IActionResult UpdateInfo(long id, [FromBody] Dictionary<string,int> item)
+        public IActionResult UpdateInfo(long id, [FromBody] Dictionary<string,string> item)
         {
-            //if (item == null)
-            //{
-            //    item = new List<ClientInfoFromShop>();
-            //    //return BadRequest();
-            //}
-            _orderRepository.AddOrder(item["beerId"], id, item["amount"]);
-            
+            if (_clientRepository.IsKeyClientValid(id, (string)item["key"]))
+            {
+                _orderRepository.AddOrder(int.Parse(item["beerId"]), id, int.Parse(item["amount"]));
+                return CreatedAtRoute("GetClient", new { id = id });
+            }
 
-            return CreatedAtRoute("GetClient", new { id = id });
+            else
+                return null;
         }
 
-
+        /*
         // POST api/client
         [HttpPost]
         public void Post([FromBody]string value)
@@ -129,6 +129,6 @@ namespace BreweryService.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }
+        }*/
     }
 }

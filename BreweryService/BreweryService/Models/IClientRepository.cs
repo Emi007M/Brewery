@@ -13,6 +13,6 @@ namespace BreweryService.Models
         Client Find(long key);
         void Remove(long key);
         void Update(Client item);
-  
+        bool IsKeyClientValid(long clientId, string key);
     }
 }

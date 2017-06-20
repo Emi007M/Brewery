@@ -7,12 +7,12 @@
     var beers = await BeerList.GetItemsAsync();
     var balance = await BeerList.GetOverallMoneyAsync();
 
-    ViewData["Title"] = "Orders todo";
+    ViewData["Title"] = "Orders";
 }
-<h2>@ViewData["Title"].</h2>
+<h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 <p>@ViewData["Beers"]</p>
-<p>Use this area to provide additional information.</p>
+<p>List of orders put by clients.</p>
 <div>
     @await Component.InvokeAsync(nameof(OrderList), new { amount = 99 })
 </div>
