@@ -8,44 +8,43 @@
 
 <div class="container">
 
-   
+
     <div class="row">
 
         <h2>Income / Outcome</h2>
-        
+
         <!--
             @@await Component.InvokeAsync(nameof(BeerList), new { name = "MoneyTable" })
         -->
 
         <table class="table">
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>Generated costs</th>
-            <th>Generated profit</th>
-            <th>Balance</th>
-        </tr>
-    </thead>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Generated costs</th>
+                    <th>Generated profit</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
 
-    @foreach (var beer in beers)
-    {
-        <tr @if (!beer.InProduction) { <text>class="text-muted"</text> }>
-            <td>@beer.Type</td>
-            <td>@beer.ProducedCosts &dollar; (@beer.ProducedBottles bottles)</td>
-            <td>@beer.SoldIncome &dollar; (@beer.SoldBottles bottles)</td>
-            <td>@beer.GetBalance()</td>
-        </tr>
-    }
+            @foreach (var beer in beers)
+            {
+                <tr @if (!beer.InProduction) { <text> class="text-muted" </text>  }>
+                    <td>@beer.Type</td>
+                    <td>@beer.ProducedCosts &dollar; (@beer.ProducedBottles bottles)</td>
+                    <td>@beer.SoldIncome &dollar; (@beer.SoldBottles bottles)</td>
+                    <td>@beer.GetBalance() &dollar;</td>
+                </tr>
+            }
             <tr style="border-top:2px solid black;">
                 <td>&Sigma;</td>
-                <td>@balance.Outcome &dollar; (@balance.BottlesProduced bottles)</td>
-                <td>@balance.Income &dollar; (@balance.BottlesSold bottles)</td>
-                <td>@balance.Balance</td>
+                <td class="text-danger">@balance.Outcome &dollar; (@balance.BottlesProduced bottles)</td>
+                <td class="text-success">@balance.Income &dollar; (@balance.BottlesSold bottles)</td>
+                <td class=@if (balance.Balance > 0) { <text> text-success</text> } else { <text>text-danger</text> }>@balance.Balance &dollar;</td>
             </tr>
 
-</table>
+        </table>
 
     </div>
 
 </div>
-

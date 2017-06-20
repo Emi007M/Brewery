@@ -70,17 +70,21 @@
         </tr>
     </thead>
 
-  
-            <tr>
-                <td>has to be taken from outside services</td>
-                <td>o</td>
-                <td>s</td>
-                <td>a</td>
-                <td> $</td>
-                <td> $</td>
-                <td> $</td>
+            @foreach (var b in Model.Info)
+            {
 
-            </tr>
+                <tr>
+                    <td>@b.BeerName</td>
+                    <td>@b.InStock</td>
+                    <td>@b.AvSale</td>
+                    <td>@b.SoldYesterday</td>
+                    <td>@b.SoldWeek</td>
+                    <td>@b.SoldMonth</td>
+                    <td>@b.SoldTotal</td>
+
+                </tr>
+            }
+           
       
 
 </table>

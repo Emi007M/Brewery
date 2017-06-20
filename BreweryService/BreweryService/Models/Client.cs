@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,7 +13,8 @@ namespace BreweryService.Models
             Name = name;
             Key = key;
             Discounts = new Discounts();
-
+            Info = new List<ClientInfoFromShop>();
+            Info.Add(  new ClientInfoFromShop() ); //generate single empty beer info, should be replaced with data from shop
         }
 
         public Client() { }
@@ -28,7 +30,11 @@ namespace BreweryService.Models
         public string Key { get; set; }
         public Discounts Discounts { get; set; }
 
-        public static Discounts GlobalDiscounts { get; set; }
+         //   public static Discounts GlobalDiscounts { get; set; }
+         /// <summary>
+         /// data taken from client's shop service
+         /// </summary>
 
+         public List <ClientInfoFromShop> Info { get; set; }
     }
 }

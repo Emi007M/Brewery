@@ -74,9 +74,26 @@ namespace BreweryService.Controllers
             IEnumerable<Order> orders = new List<Order>();
             orders = _orderRepository.GetAll().OrderBy(o => o.Date);
             return orders;
-           // return _orderRepository.GetAll();
+            // return _orderRepository.GetAll();
 
 
+        }
+
+
+
+        //POST /api/client/{id}/info
+        [HttpPost("{id}/info")]
+        public IActionResult UpdateInfo(long id, [FromBody] List<ClientInfoFromShop> item)
+        {
+            if (item == null)
+            {
+                item = new List<ClientInfoFromShop>();
+                //return BadRequest();
+            }
+
+            _clientRepository.Find(id).Info = item;
+
+            return CreatedAtRoute("GetClient", new { id = id });
         }
 
 

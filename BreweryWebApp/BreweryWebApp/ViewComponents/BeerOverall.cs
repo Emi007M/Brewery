@@ -24,7 +24,7 @@ namespace BreweryWebApp.ViewComponents
             //  if (i == 1) await InvokeProduction();
             var items = await GetOverallMoneyAsync();
             //ViewData["balancex"] = await GetBalanceAsync();
-            ViewData["balancex"] = (float)items.Balance; //nie działa, zwraca zero
+            ViewData["balancex"] = (float)items.Balance; 
 
             return View("Default");
         }

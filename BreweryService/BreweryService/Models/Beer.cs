@@ -33,10 +33,10 @@ namespace BreweryService.Models
         /// </summary>
         public bool InProduction { get; set; }
 
-        public int ProducedBottles { get; private set; }
-        public float ProducedCosts { get; private set; }
-        public int SoldBottles { get; private set; }
-        public float SoldIncome { get; private set; }
+        public int ProducedBottles { get; set; }
+        public float ProducedCosts { get; set; }
+        public int SoldBottles { get; set; }
+        public float SoldIncome { get; set; }
 
 
         public Beer()
@@ -57,9 +57,9 @@ namespace BreweryService.Models
         /// </summary>
         public void Produce()
         {
-            ProducedBottles += ProductionDaily;
+            ProducedBottles += (int)ProductionDaily;
             ProducedCosts += (float)ProductionDaily * Cost;
-            Amount += ProductionDaily;
+            Amount += (int)ProductionDaily;
         }
        
 

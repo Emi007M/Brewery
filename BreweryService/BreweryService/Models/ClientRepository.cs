@@ -13,7 +13,7 @@ namespace BreweryService.Models
             _context = context;
 
             //setting same discounts to all
-            Client.GlobalDiscounts = new Discounts();
+         //   Client.GlobalDiscounts = new Discounts();
 
 
             if (_context.Clients.Count() == 0) //for now initial db of beers
