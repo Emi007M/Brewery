@@ -58,6 +58,13 @@ namespace BreweryWebApp.Controllers
 
         }
 
+        public IActionResult GetOverallBalance()
+        {
+
+            return ViewComponent("BeerOverall", new { i = 1 });
+
+        }
+
 
     }
 }

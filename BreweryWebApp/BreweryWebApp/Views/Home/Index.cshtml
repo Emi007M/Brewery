@@ -15,7 +15,7 @@
     <h1 class="text-center">@ViewData["Title"]</h1>
 
 
-    <div class="row text-center">
+    <div class="row text-center" id="balance-div">
 
         @await Component.InvokeAsync(nameof(BeerOverall), new { amount = 99 })
          
@@ -48,8 +48,12 @@
         $('#productionBtn').click(function () {
             $.get("/Home/InvokeProduction", function (data) {
                 $("#production").html(data);
-            });
-       
+
+                $.get("/Home/GetOverallBalance", function (data) {
+                    $("#balance-div").html(data);
+                }); 
+            }); 
+            
         });
     });
 </script>
