@@ -74,7 +74,7 @@ namespace BreweryWebApp.ViewComponents
 
         }
 
-        public static async Task<OverallMoney> AddNewBeerType() //nie działa. sam post wysłany z postmana działa, a tu nic się nie robi
+        public static async Task<Beer> AddNewBeerType() //nie działa. sam post wysłany z postmana działa, a tu nic się nie robi
         {
 
             var apiRequestUri = new Uri("http://localhost:65320/api/beer");

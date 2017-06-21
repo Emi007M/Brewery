@@ -62,16 +62,24 @@ namespace BreweryService.Models
             Amount += (int)ProductionDaily;
         }
        
-
+        /// <summary>
+        /// change amount of bottles according to the order placed
+        /// </summary>
+        /// <param name="_amount"></param>
+        /// <param name="_discount"></param>
+        /// <returns>whether order was succesfull</returns>
         public bool Buy(int _amount, int _discount)
         {
-            if (_amount > Amount) return false;
+            //check whether amount is valid
+            if (_amount > Amount || _amount <=0) return false;
+            //check whether dicount is valid
+            if (_discount > 99 || _discount < 0) return false;
 
             SoldBottles += _amount;
             SoldIncome += _amount * Price * (100 - _discount) / 100f;
             Amount -= _amount;
 
-            //TODO SAVE ORDER
+            
 
             return true;
         }

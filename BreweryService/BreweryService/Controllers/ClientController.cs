@@ -79,6 +79,13 @@ namespace BreweryService.Controllers
 
         }
 
+        //GET /api/client/orders/{id}
+        [HttpGet("orders/{id}", Name = "GetOrder")]
+        public Order GetOrder(long id)
+        {
+            return _orderRepository.Find(id);
+        }
+
 
 
         //POST /api/client/{id}/info
@@ -88,13 +95,12 @@ namespace BreweryService.Controllers
 
             if (item == null)
             {
-                item = new List<ClientInfoFromShop>();
-                //return BadRequest();
+                return Json(new { success = 0 });
             }
 
             _clientRepository.Find(id).Info = item;
 
-            return CreatedAtRoute("GetClient", new { id = id });
+            return Json(new { success = 1 });
         }
 
         //POST /api/client/{id}/order
@@ -102,10 +108,17 @@ namespace BreweryService.Controllers
         [HttpPost("{id}/order")]
         public IActionResult UpdateInfo(long id, [FromBody] Dictionary<string,string> item)
         {
+            //validate password
             if (_clientRepository.IsKeyClientValid(id, (string)item["key"]))
             {
-                _orderRepository.AddOrder(int.Parse(item["beerId"]), id, int.Parse(item["amount"]));
-                return CreatedAtRoute("GetClient", new { id = id });
+                //check if beer id exists and amount of bottles is sufficient
+                long order_placed = 
+                    _orderRepository.AddOrder(int.Parse(item["beerId"]), id, int.Parse(item["amount"]));
+                if (!order_placed.Equals(-1))
+                    //return CreatedAtRoute("GetOrder", id = order_placed);
+                    return Json( GetOrder(order_placed) );
+                else
+                    return Json( new{ success = 0} );
             }
 
             else

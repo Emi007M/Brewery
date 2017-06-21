@@ -26,24 +26,31 @@ namespace BreweryService.Models
 
         }
 
-        public void Add(Order item)
+        public bool Add(Order item)
         {
             
-
+            //validate, check whether beer id exists and amount is sufficient
             if( _context.Beers.Find(item.BeerId).Buy(item.Amount, item.Discount))
             {
                 _context.Orders.Add(item);
                 _context.SaveChanges();
+                return true;
             }
+            return false;
             
         }
 
-        public void AddOrder(long beerId, long clientId, int amount)
+        public long AddOrder(long beerId, long clientId, int amount)
         {
+            
             float price = _context.Beers.Find(beerId).Price;
             int discount = _context.Clients.Find(clientId).Discounts.GetDiscount(amount);
 
-            Add(new Order(beerId, clientId, amount, price, discount));
+            Order o = new Order(beerId, clientId, amount, price, discount);
+            //if success, return order id
+            if (Add(o))
+                return o.Id;
+            return -1;
         }
 
         public Order Find(long key)

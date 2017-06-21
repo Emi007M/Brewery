@@ -21,7 +21,7 @@
         if (beer.InProduction)
         {
             <tr>
-                <td>@beer.Id. @beer.Type</td>
+                <td>@beer.Id. <a href="#" id="beer@(beer.Id)" data-type="text" data-pk="1" data-name="beertype" data-url="post.php" data-original-title="Enter beer tyype">@beer.Type</a></td>
                 <td>@beer.Cost &dollar;</td>
                 <td><u>@beer.Price &dollar;</u></td>
                 <td>@beer.Amount</td>

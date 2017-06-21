@@ -8,13 +8,13 @@ namespace BreweryService.Models
 {
     public interface IOrderRepository
     {
-        void Add(Order item);
+        bool Add(Order item);
         IEnumerable<Order> GetAll();
         Order Find(long key);
         void Remove(long key);
         void Update(Order item);
 
-        void AddOrder(long beerId, long clientId, int amount);
+        long AddOrder(long beerId, long clientId, int amount);
 
      
 
