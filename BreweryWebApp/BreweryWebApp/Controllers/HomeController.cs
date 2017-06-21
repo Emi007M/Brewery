@@ -8,6 +8,8 @@ using System.Net.Http;
 using System.IO;
 using Newtonsoft.Json;
 using BreweryWebApp.ViewComponents;
+using System.Reflection;
+using System.Text;
 
 namespace BreweryWebApp.Controllers
 {
@@ -65,6 +67,46 @@ namespace BreweryWebApp.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateBeer(string name, string value, string pk)
+        {
+
+            long beerId = int.Parse(pk);
+            //get beer of id
+            //Beer b = 
+            Beer b;
+            var apiRequestUri = new Uri("http://localhost:65320/api/beer/"+pk);
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync(apiRequestUri);
+                var responseString = await response.Content.ReadAsStringAsync();
+                b = JsonConvert.DeserializeObject<Beer>(responseString);
+             
+            }
+
+
+            // Change the field value using reflection
+            Type myType = typeof(Beer);
+            FieldInfo fields = myType.GetField(name);           
+            fields.SetValue(b, value);
+
+            // Serialize our concrete class into a JSON String
+            var stringPayload = await Task.Run(() => JsonConvert.SerializeObject(b));
+            // Wrap our JSON inside a StringContent which then can be used by the HttpClient class
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+
+            apiRequestUri = new Uri("http://localhost:65320/api/beer/"+pk);
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PutAsync(apiRequestUri, httpContent);
+                var responseString = await response.Content.ReadAsStringAsync();
+                dynamic resp = JsonConvert.DeserializeObject<Beer>(responseString);
+                return Json(new { });
+            }
+            
+        }
 
     }
 }

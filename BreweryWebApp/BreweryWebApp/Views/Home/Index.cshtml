@@ -37,6 +37,56 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+        //$('.editable').editable();
+        $('.editable').editable({
+            validate: {
+                beertype: function (v) {
+                    //check if not too long
+                    if (v.length > 30)
+                        return "name is too long, use up to 30 characters";
+                },
+                beercost: function (v) {
+                    //check whether positive float
+                    if (!$.isNumeric(v) || v <= 0)
+                        return "value has to be a positive number";
+                },
+                beerprice: function (v) {
+                    //check whether positive float
+                    if (!$.isNumeric(v) || v <= 0)
+                        return "value has to be a positive number";
+                },
+                beerproduction: function (v) {
+                    //check whether positive int
+                    if (!$.isNumeric(v) || v < 0 || !(v % 1 === 0) )
+                        return "value has to be a non negative integer";
+                }
+
+            }
+            
+
+        });
+
+        $('.editable').editable({
+            url: function (params) {
+                return $.ajax({
+                    type: 'POST',
+                    url: 'Home/UpdateBeer',
+                    data: JSON.stringify(params),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: true,
+                    cache: false,
+                    timeout: 10000,
+                    success: function (response) {
+                        alert("Success");
+                    },
+                    error: function () {
+                        alert("Error in Ajax");
+                    }
+                });
+            }
+        });
+
         $('#newBeerBtn').click(function () {
             $.get("/Home/AddNewBeer", function (data) {
                 $("#production").html(data);
