@@ -28,9 +28,9 @@ namespace BreweryService.Models
 
         public bool Add(Order item)
         {
-            
+            Beer b = _context.Beers.Find(item.BeerId);
             //validate, check whether beer id exists and amount is sufficient
-            if( _context.Beers.Find(item.BeerId).Buy(item.Amount, item.Discount))
+            if (b!=null && b.Buy(item.Amount, item.Discount))
             {
                 _context.Orders.Add(item);
                 _context.SaveChanges();
@@ -42,8 +42,10 @@ namespace BreweryService.Models
 
         public long AddOrder(long beerId, long clientId, int amount)
         {
-            
-            float price = _context.Beers.Find(beerId).Price;
+            Beer b = _context.Beers.Find(beerId);
+            if (b == null) return -1;
+
+            float price = b.Price;
             int discount = _context.Clients.Find(clientId).Discounts.GetDiscount(amount);
 
             Order o = new Order(beerId, clientId, amount, price, discount);
