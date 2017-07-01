@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\css\bootstrap.css" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\css\bootstrap.min.css" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\js\bootstrap.js" />
+    <Content Include="wwwroot\bootstrap-editable\bootstrap\js\bootstrap.min.js" />
+    <Content Include="wwwroot\bootstrap-editable\CHANGELOG.txt" />
+    <Content Include="wwwroot\bootstrap-editable\css\bootstrap-editable.css" />
+    <Content Include="wwwroot\bootstrap-editable\img\loading.gif" />
+    <Content Include="wwwroot\bootstrap-editable\jquery-1.8.2.min.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\bootstrap-editable.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\bootstrap-editable.min.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.br.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.da.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.de.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.es.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.id.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.is.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.it.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.th.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="wwwroot\bootstrap-editable\LICENSE-GPL" />
+    <Content Include="wwwroot\bootstrap-editable\LICENSE-MIT" />
+    <Content Include="wwwroot\bootstrap-editable\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Font.Awesome" Version="4.7.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\bootstrap-editable\CHANGELOG.txt" />
+    <None Include="wwwroot\bootstrap-editable\css\bootstrap-editable.css" />
+    <None Include="wwwroot\bootstrap-editable\img\loading.gif" />
+    <None Include="wwwroot\bootstrap-editable\js\bootstrap-editable.js" />
+    <None Include="wwwroot\bootstrap-editable\js\bootstrap-editable.min.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.br.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.cs.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.da.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.de.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.es.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.fi.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.fr.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.id.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.is.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.it.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.ja.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.kr.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.lt.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.lv.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.ms.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.nb.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.nl.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.pl.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.pt.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.ru.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.sv.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.th.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.tr.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.zh-CN.js" />
+    <None Include="wwwroot\bootstrap-editable\js\locales\bootstrap-datepicker.zh-TW.js" />
+    <None Include="wwwroot\bootstrap-editable\LICENSE-GPL" />
+    <None Include="wwwroot\bootstrap-editable\LICENSE-MIT" />
+    <None Include="wwwroot\bootstrap-editable\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BreweryService\BreweryService.csproj" />
+  </ItemGroup>
+
+</Project>
