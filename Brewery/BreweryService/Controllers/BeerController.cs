@@ -70,9 +70,7 @@ namespace BreweryService.Controllers
                 return NotFound();
             }
 
-            //TODO update only mentioned things
-            //beer.IsComplete = item.IsComplete;
-            //beer.Name = item.Name;
+
             foreach (var prop in item.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 //if(prop.GetValue(item, null) != null)

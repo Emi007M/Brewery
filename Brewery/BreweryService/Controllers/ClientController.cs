@@ -104,25 +104,23 @@ namespace BreweryService.Controllers
         }
 
         //POST /api/client/{id}/order
-        // dictionary: { "beerId": id, "amount": amount, "key": password }
-        [HttpPost("{id}/order")]
-        public IActionResult UpdateInfo(long id, [FromBody] Dictionary<string,string> item)
+        [HttpPost("orders")]
+        public IActionResult UpdateInfo([FromBody] OrderProposal item)
         {
+            var client = _clientRepository.FindByName(item.ClientName);
             //validate password
-            if (_clientRepository.IsKeyClientValid(id, (string)item["key"]))
+            if (client != null && _clientRepository.IsKeyClientValid(client.Id,item.ClientKey))
             {
-                //check if beer id exists and amount of bottles is sufficient
-                long order_placed = 
-                    _orderRepository.AddOrder(int.Parse(item["beerId"]), id, int.Parse(item["amount"]));
-                if (!order_placed.Equals(-1))
-                    //return CreatedAtRoute("GetOrder", id = order_placed);
-                    return Json( GetOrder(order_placed) );
-                else
-                    return Json( new{ success = 0} );
-            }
+                var results = new Dictionary<int, long>();
+                foreach(var o in item.Beers)
+                {
+                    long order_placed = _orderRepository.AddOrder(o.Key, client.Id, o.Value));
+                    results.Add(o.Key, order_placed);
+                }
 
-            else
-                return null;
+                 return Json(results);
+            }
+            return null;
         }
     }
 }

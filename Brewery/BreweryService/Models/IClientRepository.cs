@@ -11,6 +11,7 @@ namespace BreweryService.Models
         void Add(Client item);
         IEnumerable<Client> GetAll();
         Client Find(long key);
+        Client FindByName(string clientName);
         void Remove(long key);
         void Update(Client item);
         bool IsKeyClientValid(long clientId, string key);

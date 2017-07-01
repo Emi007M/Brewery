@@ -85,11 +85,29 @@ namespace BreweryWebApp.Controllers
              
             }
 
-
-            // Change the field value using reflection
-            Type myType = typeof(Beer);
-            FieldInfo fields = myType.GetField(name);           
-            fields.SetValue(b, value);
+            switch(name)
+            {
+                case "Cost":
+                    {
+                        b.Cost = Single.Parse(value);
+                    }
+                    break;
+                case "Price":
+                    {
+                        b.Price = Single.Parse(value);
+                    }
+                    break;
+                case "ProductionDaily":
+                    {
+                        b.ProductionDaily = int.Parse(value);
+                    }
+                    break;
+                case "Type":
+                    {
+                        b.Type = value;
+                    }
+                    break;
+            }
 
             // Serialize our concrete class into a JSON String
             var stringPayload = await Task.Run(() => JsonConvert.SerializeObject(b));

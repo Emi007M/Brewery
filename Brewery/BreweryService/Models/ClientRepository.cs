@@ -66,6 +66,11 @@ namespace BreweryService.Models
                 return false;
         }
 
+        public Client FindByName(string clientName)
+        {
+            return _context.Clients.FirstOrDefault(t => t.Name == clientName);
+        }
+
         //public OverallMoney GetOverallMoney()
         //{
         //    return new OverallMoney(_context);
@@ -78,6 +83,6 @@ namespace BreweryService.Models
         //    _context.SaveChanges();
         //}
 
-        
+
     }
 }
