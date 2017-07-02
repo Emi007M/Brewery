@@ -114,7 +114,7 @@ namespace BreweryService.Controllers
                 var results = new Dictionary<int, long>();
                 foreach(var o in item.Beers)
                 {
-                    long order_placed = _orderRepository.AddOrder(o.Key, client.Id, o.Value));
+                    long order_placed = _orderRepository.AddOrder(o.Key, client.Id, o.Value);
                     results.Add(o.Key, order_placed);
                 }
 
