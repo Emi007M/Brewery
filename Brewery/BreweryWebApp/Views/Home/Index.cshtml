@@ -9,16 +9,13 @@
 
 }
 
-
 <div class="container">
 
     <h1 class="text-center">@ViewData["Title"]</h1>
 
-
     <div class="row text-center" id="balance-div">
 
         @await Component.InvokeAsync(nameof(BeerOverall), new { amount = 99 })
-         
     </div>
     <div class="row">
 
@@ -31,7 +28,6 @@
 
         <input id="productionBtn" type="button" value="Call daily production" class="btn btn-success" />
     </div>
-
 </div>
 
 <script type="text/javascript">
@@ -62,7 +58,6 @@
                 }
 
             }
-            
 
         });
 
@@ -93,7 +88,6 @@
             });
 
         });
-      
 
         $('#productionBtn').click(function () {
             $.get("/Home/InvokeProduction", function (data) {
@@ -101,10 +95,9 @@
 
                 $.get("/Home/GetOverallBalance", function (data) {
                     $("#balance-div").html(data);
-                }); 
-            }); 
-            
+                });
+            });
+
         });
     });
 </script>
-

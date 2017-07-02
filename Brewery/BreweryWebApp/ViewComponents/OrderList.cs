@@ -3,32 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using static BreweryService.Models.BeerRepository;
 
 namespace BreweryWebApp.ViewComponents
 {
     public class OrderList : ViewComponent
     {
-
-        
         public OrderList()
         {
-            
         }
 
         public async Task<IViewComponentResult> InvokeAsync(int i)
         {
-          //  if (i == 1) await InvokeProduction();
+            //  if (i == 1) await InvokeProduction();
             var items = await GetItemsAsync();
             return View("Default", items);
         }
-       
+
         public static async Task<List<Order>> GetItemsAsync()
         {
-
             var apiRequestUri = new Uri("http://localhost:65320/api/client/orders");
             using (var client = new HttpClient())
             {
@@ -36,7 +30,6 @@ namespace BreweryWebApp.ViewComponents
                 dynamic orders = JsonConvert.DeserializeObject<List<Order>>(stringResponse);
                 return orders;
             }
-        
         }
 
         //public static async Task<float> GetBalanceAsync()
@@ -48,7 +41,6 @@ namespace BreweryWebApp.ViewComponents
 
         //public static async Task<OverallMoney> GetOverallMoneyAsync()
         //{
-
         //    var apiRequestUri = new Uri("http://localhost:65320/api/beer/overall");
         //    using (var client = new HttpClient())
         //    {
@@ -61,7 +53,6 @@ namespace BreweryWebApp.ViewComponents
 
         //public static async task<overallmoney> invokeproduction()
         //{
-
         //    var apirequesturi = new uri("http://localhost:65320/api/beer/produce");
         //    using (var client = new httpclient())
         //    {

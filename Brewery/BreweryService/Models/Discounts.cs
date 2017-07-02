@@ -12,20 +12,20 @@ namespace BreweryService.Models
 
         public Discounts()
         {
-          //  if(Client.GlobalDiscounts != null)
-          //  {
-          //      Per100 = Client.GlobalDiscounts.Per100;
-          //      Per250 = Client.GlobalDiscounts.Per250;
-          //     Per500 = Client.GlobalDiscounts.Per500;
-          //      Per1000 = Client.GlobalDiscounts.Per1000;
-          //  }
-          //  else
-          //  {
-                Per100 = 1;
-                Per250 = 2;
-                Per500 = 4;
-                Per1000 = 5;
-           // }
+            //  if(Client.GlobalDiscounts != null)
+            //  {
+            //      Per100 = Client.GlobalDiscounts.Per100;
+            //      Per250 = Client.GlobalDiscounts.Per250;
+            //     Per500 = Client.GlobalDiscounts.Per500;
+            //      Per1000 = Client.GlobalDiscounts.Per1000;
+            //  }
+            //  else
+            //  {
+            Per100 = 1;
+            Per250 = 2;
+            Per500 = 4;
+            Per1000 = 5;
+            // }
         }
 
         public int Per100
@@ -51,8 +51,6 @@ namespace BreweryService.Models
             get { return _per1000; }
             set { _per1000 = value; Recalculate(); }
         }
-
- 
 
         public int GetDiscount(int amount)
         {

@@ -3,7 +3,6 @@
 
 @model List<Order>
 
-
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +18,7 @@
 
     @foreach (var o in Model)
     {
-       
+
             <tr>
                 <td>@o.Date</td>
                 <td>@o.ClientId</td>
@@ -28,12 +27,7 @@
                 <td>@o.Price &dollar;</td>
                 <td>@o.Discount %</td>
                 <td>@o.TotalPrice &dollar;</td>
-                
             </tr>
-        
 
     }
-
 </table>
-
-   

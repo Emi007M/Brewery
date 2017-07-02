@@ -1,4 +1,4 @@
-/*! Bootstrap Editable - v1.1.4 
+/*! Bootstrap Editable - v1.1.4
 * In-place editing with Bootstrap Form and Popover
 * https://github.com/vitalets/bootstrap-editable
 * Copyright (c) 2012 Vitaliy Potapov; Licensed MIT, GPL */
@@ -9,21 +9,20 @@ a.editable, a.editable:hover {
 }
 
 a.editable-open, a.editable-open:hover {
- 
 }
 
 a.editable-empty {
-  font-style: italic; 
-  color: #DD1144;  
+  font-style: italic;
+  color: #DD1144;
 }
 
 a.editable-changed {
-  font-weight: bold; 
+  font-weight: bold;
 }
-                 
+
 .editable-loading {
-  background: url('../img/loading.gif') center center no-repeat;  
-  height: 20px;  
+  background: url('../img/loading.gif') center center no-repeat;
+  height: 20px;
 }
 
 .popover.editable-popover {
@@ -44,7 +43,6 @@ a.editable-changed {
 .popover.editable-popover .form-inline textarea {
    vertical-align: top;
 }
-
 
 /*!
  * Datepicker for Bootstrap
@@ -67,13 +65,13 @@ a.editable-changed {
 }
 
 .datepicker-inline {
-  width: 220px; 
+  width: 220px;
 /*  height: 220px;  */
 }
 
 .datepicker-float {
   top: 0;
-  left: 0;    
+  left: 0;
 }
 
 .datepicker-float:before {

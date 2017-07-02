@@ -1,4 +1,5 @@
 ﻿
+using CryptoHelper;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace BreweryService.Models
         public Client(string name, string key)
         {
             Name = name;
-            Key = key;
+            Key = Crypto.HashPassword(key);
             Discounts = new Discounts();
             Info = new List<ClientInfoFromShop>();
             Info.Add(  new ClientInfoFromShop() ); //generate single empty beer info, should be replaced with data from shop

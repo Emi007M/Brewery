@@ -5,9 +5,7 @@
     var balance = await BeerList.GetOverallMoneyAsync();
 }
 
-
 <div class="container">
-
 
     <div class="row">
 
@@ -42,9 +40,6 @@
                 <td class="text-success">@balance.Income &dollar; (@balance.BottlesSold bottles)</td>
                 <td class=@if (balance.Balance > 0) { <text> text-success</text> } else { <text>text-danger</text> }>@balance.Balance &dollar;</td>
             </tr>
-
         </table>
-
     </div>
-
 </div>

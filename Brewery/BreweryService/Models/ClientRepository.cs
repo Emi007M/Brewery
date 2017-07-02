@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptoHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,10 +61,7 @@ namespace BreweryService.Models
 
         public bool IsKeyClientValid(long clientId, string key)
         {
-            if (_context.Clients.Find(clientId).Key.Equals(key))
-                return true;
-            else
-                return false;
+            return Crypto.VerifyHashedPassword(_context.Clients.Find(clientId).Key, key);
         }
 
         public Client FindByName(string clientName)

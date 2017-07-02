@@ -9,34 +9,33 @@ namespace BreweryService.Models
     {
         public ClientInfoFromShop()
         {
-            BeerName        = "beer";
-            InStock         = 0;
-            AvSale          = 0;
-            SoldYesterday   = 0;
-            SoldWeek        = 0;
-            SoldMonth       = 0;
-            SoldTotal       = 0;
+            BeerName = "beer";
+            InStock = 0;
+            AvSale = 0;
+            SoldYesterday = 0;
+            SoldWeek = 0;
+            SoldMonth = 0;
+            SoldTotal = 0;
         }
 
         public ClientInfoFromShop(string _beerName, int _inStock, float _avSale, int _soldYesterday, int _soldWeek, int _soldMonth, int _soldTotal)
         {
-            BeerName        = _beerName;
-            InStock         = _inStock;
-            AvSale          = _avSale;
-            SoldYesterday   = _soldYesterday;
-            SoldWeek        = _soldWeek;
-            SoldMonth       = _soldMonth;
-            SoldTotal       = _soldTotal;
+            BeerName = _beerName;
+            InStock = _inStock;
+            AvSale = _avSale;
+            SoldYesterday = _soldYesterday;
+            SoldWeek = _soldWeek;
+            SoldMonth = _soldMonth;
+            SoldTotal = _soldTotal;
         }
-
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-
         public string BeerName { get; set; }
         public int InStock { get; set; }
+
         /// <summary>
         /// average daily sold bottles
         /// </summary>

@@ -1,43 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BreweryService.Models
 {
     public class OrderRepository : IOrderRepository
     {
         private readonly BeerContext _context;
+
         public OrderRepository(BeerContext context)
         {
             _context = context;
 
             //setting same discounts to all
-           // Client.GlobalDiscounts = new Discounts();
-
+            // Client.GlobalDiscounts = new Discounts();
 
             if (_context.Orders.Count() == 0) //for now initial db of beers
             {
-              
-
             }
-
-           
-
         }
 
         public bool Add(Order item)
         {
             Beer b = _context.Beers.Find(item.BeerId);
             //validate, check whether beer id exists and amount is sufficient
-            if (b!=null && b.Buy(item.Amount, item.Discount))
+            if (b != null && b.Buy(item.Amount, item.Discount))
             {
                 _context.Orders.Add(item);
                 _context.SaveChanges();
                 return true;
             }
             return false;
-            
         }
 
         public long AddOrder(long beerId, long clientId, int amount)
@@ -89,7 +81,5 @@ namespace BreweryService.Models
         //    _context.ProduceAll();
         //    _context.SaveChanges();
         //}
-
-        
     }
 }

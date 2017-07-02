@@ -4,13 +4,10 @@
 @model Client
 
 @{
-   
+
     var orders = await ClientList.GetOrdersAsync((int)Model.Id);
-  
+
 }
-
-
-
 
 <label>Name:</label><input type="text" value="@Model.Name" />
 <label>Key:</label><input type="text" value="@Model.Key" disabled="disabled" />
@@ -18,7 +15,6 @@
 
 <div>
     <label>Personal discounts:</label> @Model.Discounts.Per100%/100, @Model.Discounts.Per250%/250, @Model.Discounts.Per500%/500, @Model.Discounts.Per1000%/1000
-
 </div>
 <div>
 <label>Orders' data:</label>
@@ -37,7 +33,7 @@
 
     @foreach (var t in orders.GetTypes())
     {
-      
+
             <tr>
                 <td>@t</td>
                 <td>@orders.getOrdersAmount(@t)</td>
@@ -45,19 +41,13 @@
                 <td>@orders.getAvOrderSize(@t)</td>
                 <td>@orders.getAvIncomeBottle(@t)</td>
                 <td>@orders.getIncome(@t)</td>
-  
-
             </tr>
-        
+
     }
-
 </table>
-
 </div>
 
-
 <label>Sale statistics (refreshed daily):</label>
-
 
 <table class="table">
     <thead>
@@ -83,14 +73,7 @@
                     <td>@b.SoldWeek</td>
                     <td>@b.SoldMonth</td>
                     <td>@b.SoldTotal</td>
-
                 </tr>
             }
-           
-      
-
 </table>
 <hr />
-
-
-   

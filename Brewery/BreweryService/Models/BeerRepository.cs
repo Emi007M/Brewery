@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BreweryService.Models
 {
     public class BeerRepository : IBeerRepository
     {
         private readonly BeerContext _context;
+
         public BeerRepository(BeerContext context)
         {
             _context = context;
@@ -17,7 +16,7 @@ namespace BreweryService.Models
                 Add(new Beer
                 {
                     Type = "Pale Ale",
-                   // Amount = 400,
+                    // Amount = 400,
                     ProductionDaily = 200,
                     Price = 5
                 });
@@ -35,11 +34,7 @@ namespace BreweryService.Models
                     ProductionDaily = 200,
                     Price = 10
                 });
-
-
-                
             }
-
         }
 
         public void Add(Beer item)
@@ -74,7 +69,6 @@ namespace BreweryService.Models
         public OverallMoney GetOverallMoney()
         {
             return _context.Overall;
-
         }
 
         public void ProduceAll()
@@ -82,10 +76,5 @@ namespace BreweryService.Models
             _context.ProduceAll();
             _context.SaveChanges();
         }
-
-
-
-
-        
     }
 }

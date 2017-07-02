@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BreweryService.Models;
 using Microsoft.AspNetCore.Mvc;
-using BreweryService.Models;
-using System.Net.Http;
-using System.IO;
 using Newtonsoft.Json;
-using BreweryWebApp.ViewComponents;
-using System.Reflection;
+using System;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BreweryWebApp.Controllers
 {
@@ -38,8 +33,7 @@ namespace BreweryWebApp.Controllers
         public IActionResult Orders()
         {
             //ViewData["Message"] = "Your sth page.";
-             return View();
-
+            return View();
         }
 
         public IActionResult Error()
@@ -49,59 +43,55 @@ namespace BreweryWebApp.Controllers
 
         public IActionResult InvokeProduction()
         {
-
             return ViewComponent("BeerList", new { i = 1 });
-
         }
+
         public IActionResult AddNewBeer()
         {
-
             return ViewComponent("BeerList", new { i = 2 });
-
         }
 
         public IActionResult GetOverallBalance()
         {
-
             return ViewComponent("BeerOverall", new { i = 1 });
-
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateBeer(string name, string value, string pk)
         {
-
             long beerId = int.Parse(pk);
             //get beer of id
-            //Beer b = 
+            //Beer b =
             Beer b;
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer/"+pk);
+            var apiRequestUri = new Uri("http://localhost:65320/api/beer/" + pk);
 
             using (var client = new HttpClient())
             {
                 var response = await client.GetAsync(apiRequestUri);
                 var responseString = await response.Content.ReadAsStringAsync();
                 b = JsonConvert.DeserializeObject<Beer>(responseString);
-             
             }
 
-            switch(name)
+            switch (name)
             {
                 case "Cost":
                     {
                         b.Cost = Single.Parse(value);
                     }
                     break;
+
                 case "Price":
                     {
                         b.Price = Single.Parse(value);
                     }
                     break;
+
                 case "ProductionDaily":
                     {
                         b.ProductionDaily = int.Parse(value);
                     }
                     break;
+
                 case "Type":
                     {
                         b.Type = value;
@@ -114,7 +104,7 @@ namespace BreweryWebApp.Controllers
             // Wrap our JSON inside a StringContent which then can be used by the HttpClient class
             var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
-            apiRequestUri = new Uri("http://localhost:65320/api/beer/"+pk);
+            apiRequestUri = new Uri("http://localhost:65320/api/beer/" + pk);
 
             using (var client = new HttpClient())
             {
@@ -123,8 +113,6 @@ namespace BreweryWebApp.Controllers
                 dynamic resp = JsonConvert.DeserializeObject<Beer>(responseString);
                 return Json(new { });
             }
-            
         }
-
     }
 }

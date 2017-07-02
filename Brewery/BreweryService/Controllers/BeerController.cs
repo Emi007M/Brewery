@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BreweryService.Models;
 using Microsoft.AspNetCore.Mvc;
-using BreweryService.Models;
+using System.Collections.Generic;
 using System.Reflection;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,7 +10,6 @@ namespace BreweryService.Controllers
     [Route("api/[controller]")]
     public class BeerController : Controller
     {
-
         private readonly IBeerRepository _beerRepository;
 
         public BeerController(IBeerRepository beerRepository)
@@ -70,11 +66,10 @@ namespace BreweryService.Controllers
                 return NotFound();
             }
 
-
             foreach (var prop in item.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 //if(prop.GetValue(item, null) != null)
-                prop.SetValue(beer,  prop.GetValue(item, null) );
+                prop.SetValue(beer, prop.GetValue(item, null));
             }
 
             _beerRepository.Update(beer);
@@ -95,7 +90,6 @@ namespace BreweryService.Controllers
             return new NoContentResult();
         }
 
-
         //overall income/outcome statistics
 
         //GET /api/beer/overall/
@@ -103,7 +97,6 @@ namespace BreweryService.Controllers
         public OverallMoney GetOverallMoney()
         {
             return _beerRepository.GetOverallMoney();
-
         }
 
         //GET /api/beer/produce/
@@ -112,7 +105,6 @@ namespace BreweryService.Controllers
         {
             _beerRepository.ProduceAll();
             return _beerRepository.GetOverallMoney();
-
         }
     }
 }

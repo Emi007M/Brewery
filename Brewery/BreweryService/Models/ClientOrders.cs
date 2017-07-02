@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BreweryService.Models
 {
@@ -13,6 +11,7 @@ namespace BreweryService.Models
         {
             orders = new List<Order>();
         }
+
         public ClientOrders(IEnumerable<Order> _orders)
         {
             orders = _orders;
@@ -21,14 +20,13 @@ namespace BreweryService.Models
         public IEnumerable<int> GetTypes()
         {
             HashSet<int> types = new HashSet<int>();
-            foreach(Order o in orders)
+            foreach (Order o in orders)
             {
                 types.Add((int)o.BeerId);
             }
 
             return types;
         }
-
 
         public int getOrdersAmount(int type)
         {
@@ -54,8 +52,5 @@ namespace BreweryService.Models
         {
             return orders.Where(o => o.BeerId == type).Sum(o => o.TotalPrice);
         }
-
-
-
     }
 }

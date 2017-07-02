@@ -1,27 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BreweryService.Models
 {
     public class BeerContext : DbContext
     {
-
-
-
         public BeerContext(DbContextOptions<BeerContext> options)
             : base(options)
         {
-          //  Orders = new Orders(this);
-          //  Clients = new Clients();
+            //  Orders = new Orders(this);
+            //  Clients = new Clients();
         }
 
         public DbSet<Beer> Beers { get; set; }
 
-        public DbSet<Order>  Orders { get; set; }
-        public DbSet<Client>  Clients { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         public OverallMoney Overall
         {
@@ -36,7 +30,7 @@ namespace BreweryService.Models
                     Balance = GetOverallBalance()
                 };
             }
-        } 
+        }
 
         public float GetOverallOutcome()
         {
@@ -67,8 +61,7 @@ namespace BreweryService.Models
         public void ProduceAll()
         {
             foreach (var beer in Beers)
-                beer.Produce();        
+                beer.Produce();
         }
-        
     }
 }

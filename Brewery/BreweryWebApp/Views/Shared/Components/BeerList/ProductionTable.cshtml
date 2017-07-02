@@ -3,7 +3,6 @@
 
 @model IEnumerable<Beer>
 
-
 <table class="table">
     <thead>
         <tr>
@@ -21,26 +20,26 @@
         if (beer.InProduction)
         {
             <tr> <!--editable fields of beer types:-->
-                <td>@beer.Id. <a href="#" data-pk="@(beer.Id)" data-type="text" class="editable" 
-                                 data-name="Type"       
-                                 data-url="Home/UpdateBeer" 
+                <td>@beer.Id. <a href="#" data-pk="@(beer.Id)" data-type="text" class="editable"
+                                 data-name="Type"
+                                 data-url="Home/UpdateBeer"
                                  data-original-title="Beer type">@beer.Type</a></td>
 
                 <td>          <a href="#" data-pk="@(beer.Id)" data-type="text" class="editable" data-inputclass="span1"
-                                 data-name="Cost"       
-                                 data-url="Home/UpdateBeer" 
+                                 data-name="Cost"
+                                 data-url="Home/UpdateBeer"
                                  data-original-title="Cost of production per bottle">@beer.Cost</a> &dollar;</td>
 
                 <td>          <a href="#" data-pk="@(beer.Id)" data-type="text" class="editable" data-inputclass="span1"
-                                 data-name="Price"      
-                                 data-url="Home/UpdateBeer" 
+                                 data-name="Price"
+                                 data-url="Home/UpdateBeer"
                                  data-original-title="Whole sale price per bottle">@beer.Price</a> &dollar;</td>
 
                 <td>@beer.Amount</td>
 
                 <td>          <a href="#" data-pk="@(beer.Id)" data-type="text" class="editable"
-                                 data-name="ProductionDaily" 
-                                 data-url="Home/UpdateBeer" 
+                                 data-name="ProductionDaily"
+                                 data-url="Home/UpdateBeer"
                                  data-original-title="Daily production in bottles">@beer.ProductionDaily</a></td>
 
               <!--  <td><div class="btn-group-sm">
@@ -51,7 +50,4 @@
         }
 
     }
-
 </table>
-
-   

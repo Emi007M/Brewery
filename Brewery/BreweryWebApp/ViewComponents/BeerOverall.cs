@@ -2,21 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using static BreweryService.Models.BeerRepository;
 
 namespace BreweryWebApp.ViewComponents
 {
     public class BeerOverall : ViewComponent
     {
-
-        
         public BeerOverall()
         {
-            
         }
 
         public async Task<IViewComponentResult> InvokeAsync(int i)
@@ -24,12 +18,10 @@ namespace BreweryWebApp.ViewComponents
             //  if (i == 1) await InvokeProduction();
             var items = await GetOverallMoneyAsync();
             //ViewData["balancex"] = await GetBalanceAsync();
-            ViewData["balancex"] = (float)items.Balance; 
+            ViewData["balancex"] = (float)items.Balance;
 
             return View("Default");
         }
-       
-     
 
         public static async Task<float> GetBalanceAsync()
         {
@@ -47,7 +39,6 @@ namespace BreweryWebApp.ViewComponents
 
         public static async Task<OverallMoney> GetOverallMoneyAsync()
         {
-
             var apiRequestUri = new Uri("http://localhost:65320/api/beer/overall");
             using (var client = new HttpClient())
             {
@@ -55,12 +46,10 @@ namespace BreweryWebApp.ViewComponents
                 OverallMoney beers = JsonConvert.DeserializeObject<OverallMoney>(stringResponse);
                 return beers;
             }
-
         }
 
         //public static async Task<OverallMoney> InvokeProduction()
         //{
-
         //    var apiRequestUri = new Uri("http://localhost:65320/api/beer/produce");
         //    using (var client = new HttpClient())
         //    {
