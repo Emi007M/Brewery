@@ -40,7 +40,7 @@ namespace BreweryService.Controllers
         [HttpGet]
         public IEnumerable<Client> Get()
         {
-            
+
             return _clientRepository.GetAll();
         }
 
@@ -86,11 +86,23 @@ namespace BreweryService.Controllers
             return _orderRepository.Find(id);
         }
 
+        //POST /api/client/discounts
+        [HttpPost("discounts", Name = "GetDiscounts")]
+        public IActionResult GetDiscounts([FromBody] AuthorizedObject<dynamic> auth)
+        {
+            var client = _clientRepository.FindByName(auth.ClientName);
+            //validate password
+            if (client != null && _clientRepository.IsKeyClientValid(client.Id, auth.ClientKey))
+            {
+                return Json(client.Discounts);
+            }
 
+            return null;
+        }
 
-        //POST /api/client/{id}/info
-        [HttpPost("{id}/info")]
-        public IActionResult UpdateInfo(long id, [FromBody] List<ClientInfoFromShop> item)
+        //POST /api/client/info
+        [HttpPost("info")]
+        public IActionResult UpdateInfo(long id, [FromBody] AuthorizedObject<List<ClientInfoFromShop>> item)
         {
 
             if (item == null)
@@ -98,27 +110,27 @@ namespace BreweryService.Controllers
                 return Json(new { success = 0 });
             }
 
-            _clientRepository.Find(id).Info = item;
+            _clientRepository.Find(id).Info = item.Object;
 
             return Json(new { success = 1 });
         }
 
-        //POST /api/client/{id}/order
+        //POST /api/client/orders
         [HttpPost("orders")]
-        public IActionResult UpdateInfo([FromBody] OrderProposal item)
+        public IActionResult PlaceOrders([FromBody] AuthorizedObject<Dictionary<int, int>> item)
         {
             var client = _clientRepository.FindByName(item.ClientName);
             //validate password
-            if (client != null && _clientRepository.IsKeyClientValid(client.Id,item.ClientKey))
+            if (client != null && _clientRepository.IsKeyClientValid(client.Id, item.ClientKey))
             {
                 var results = new Dictionary<int, long>();
-                foreach(var o in item.Beers)
+                foreach (var o in item.Object)
                 {
                     long order_placed = _orderRepository.AddOrder(o.Key, client.Id, o.Value);
                     results.Add(o.Key, order_placed);
                 }
 
-                 return Json(results);
+                return Json(results);
             }
             return null;
         }
