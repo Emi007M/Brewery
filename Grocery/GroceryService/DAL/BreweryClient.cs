@@ -30,7 +30,7 @@ namespace GroceryService.DAL
 
         public async Task<dynamic> SendStats(IEnumerable<SalesInfo> salesinfo)
         {
-            return await _config.URI.AppendPathSegment("client/orders").PostJsonAsync(new AuthorizedObject<IEnumerable<SalesInfo>>
+            return await _config.URI.AppendPathSegment("client/info").PostJsonAsync(new AuthorizedObject<IEnumerable<SalesInfo>>
             {
                 ClientKey = _config.ClientKey,
                 ClientName = _config.ClientName,

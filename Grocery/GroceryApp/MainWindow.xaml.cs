@@ -13,7 +13,7 @@ namespace GroceryApp
     public partial class MainWindow : Window
     {
         private ServiceClient _client;
-        
+
         public List<Beer> Beers { get; set; }
         public List<Sale> Sales { get; set; }
         public List<SalesInfo> SalesInfos { get; set; }
@@ -98,7 +98,8 @@ namespace GroceryApp
             if (Orders.ContainsKey(beer))
             {
                 Orders[beer] += amount;
-            } else
+            }
+            else
             {
                 Orders.Add(beer, amount);
             }
@@ -110,7 +111,7 @@ namespace GroceryApp
         {
             CommitOrdersButton.IsEnabled = false;
             var orders = new Dictionary<int, int>();
-            foreach(var kvp in Orders)
+            foreach (var kvp in Orders)
             {
                 orders.Add((int)kvp.Key.Id, kvp.Value);
             }
@@ -131,7 +132,8 @@ namespace GroceryApp
 
                 BeersList.Items.Refresh();
                 BeerOrderList.Items.Refresh();
-            } catch
+            }
+            catch
             {
 
             }
@@ -155,7 +157,8 @@ namespace GroceryApp
                 StatsSoldTotal.Text = info.SoldTotal.ToString();
                 StatsSoldWeek.Text = info.SoldWeek.ToString();
                 StatsSoldYesterday.Text = info.SoldYesterday.ToString();
-            } catch { }
+            }
+            catch { }
 
 
         }
@@ -170,7 +173,18 @@ namespace GroceryApp
             try
             {
                 SalesInfos = (await SalesInfo.CreateSalesInfo(Beers, Sales)).ToList();
-            } catch { }
+            }
+            catch { }
+        }
+
+        private async void SendStats_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                await _client.SendSalesInfo(SalesInfos);
+            }
+            catch { }
         }
     }
 }

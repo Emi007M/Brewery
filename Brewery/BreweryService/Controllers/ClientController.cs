@@ -110,8 +110,12 @@ namespace BreweryService.Controllers
                 return Json(new { success = 0 });
             }
 
-            _clientRepository.Find(id).Info = item.Object;
-
+            var client = _clientRepository.FindByName(item.ClientName);
+            //validate password
+            if (client != null && _clientRepository.IsKeyClientValid(client.Id, item.ClientKey))
+            {
+                client.Info = item.Object;
+            }
             return Json(new { success = 1 });
         }
 
