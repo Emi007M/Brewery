@@ -5,7 +5,151 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroceryApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-    </Grid>
+        Title="Grocery App" Height="350" Width="525">
+    <TabControl>
+        <TabItem Header="Sales">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Column="0" Grid.Row="0" x:Name="SalesList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Beer.Type}"></TextBlock>
+                                    <TextBlock Text="{Binding Amount}">*</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView Grid.Column="1" Grid.Row="0" x:Name="BeersList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>*</TextBlock>
+                                    <TextBlock Text="{Binding Type}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Price:</TextBlock>
+                                    <TextBlock Text="{Binding Price}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Stock:</TextBlock>
+                                    <TextBlock Text="{Binding InStore}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="SaleAmountBox" Width="200"></TextBox>
+                        <Button x:Name="SellButton" Click="SellButton_Click">Sell</Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Orders">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="32"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="BeerOrderList" Grid.Column="0" Grid.Row="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>*</TextBlock>
+                                    <TextBlock Text="{Binding Type}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Price:</TextBlock>
+                                    <TextBlock Text="{Binding Price}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Stock:</TextBlock>
+                                    <TextBlock Text="{Binding InStore}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Amount:</TextBlock>
+                                    <TextBlock Text="{Binding Amount}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ListView x:Name="OrderPartList" Grid.Column="1" Grid.Row="0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>*</TextBlock>
+                                    <TextBlock Text="{Binding Key.Type}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>Amount:</TextBlock>
+                                    <TextBlock Text="{Binding Value}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBox Grid.Column="0" Grid.Row="1" x:Name="OrderAmountBox"></TextBox>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="OrderButton" Click="OrderButton_Click" Grid.Column="0">Order</Button>
+                    <Button x:Name="CommitOrdersButton" Click="CommitOrdersButton_Click" Grid.Column="1">Commit orders</Button>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Stats" RequestBringIntoView="TabItem_RequestBringIntoView">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView SelectionMode="Single" x:Name="BeerStatsList" Grid.Column="0" Grid.Row="0" SelectionChanged="BeerStatsList_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Type}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackPanel Grid.Column="1">
+                    <Label>Beer</Label>
+                    <TextBlock x:Name="StatsBeerName"></TextBlock>
+                    <Label>In Stock</Label>
+                    <TextBlock x:Name="StatsInStock"></TextBlock>
+                    <Label>Av Sales</Label>
+                    <TextBlock x:Name="StatsAvSale"></TextBlock>
+                    <Label>Sold Yesterday</Label>
+                    <TextBlock x:Name="StatsSoldYesterday"></TextBlock>
+                    <Label>Sold Week</Label>
+                    <TextBlock x:Name="StatsSoldWeek"></TextBlock>
+                    <Label>Sold Month</Label>
+                    <TextBlock x:Name="StatsSoldMonth"></TextBlock>
+                    <Label>Sold Total</Label>
+                    <TextBlock x:Name="StatsSoldTotal"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>

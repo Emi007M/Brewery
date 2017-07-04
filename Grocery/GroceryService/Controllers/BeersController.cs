@@ -1,5 +1,5 @@
 ﻿using GroceryService.DAL;
-using GroceryService.Models;
+using GroceryModels.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ namespace GroceryService.Controllers
     {
         private readonly GroceryContext _context;
         private readonly BreweryClient _client;
+        private DateTime _beersUpdated;
 
         public BeersController(GroceryContext context, BreweryClient client)
         {
@@ -24,6 +25,11 @@ namespace GroceryService.Controllers
         [HttpGet]
         public async Task<IEnumerable<Beer>> GetAll()
         {
+            if(_context.Beers.Count() == 0 || _beersUpdated < DateTime.Now.AddDays(-1))
+            {
+                await Refresh();
+            }
+
             return _context.Beers;
         }
 
@@ -35,7 +41,7 @@ namespace GroceryService.Controllers
         }
 
         [Route("refresh")]
-        [HttpGet]
+        [HttpPost]
         public async Task Refresh()
         {
             var beers = await _client.GetBeers();
@@ -53,6 +59,9 @@ namespace GroceryService.Controllers
                     _context.Beers.Update(local);
                 }
             }
+
+            _beersUpdated = DateTime.Now;
+            await _context.SaveChangesAsync();
         }
     }
 }

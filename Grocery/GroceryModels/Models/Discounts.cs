@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GroceryService.Models
+namespace GroceryModels.Models
 {
     public class Discounts
     {

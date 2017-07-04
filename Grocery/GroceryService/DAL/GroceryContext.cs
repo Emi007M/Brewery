@@ -1,4 +1,4 @@
-﻿using GroceryService.Models;
+﻿using GroceryModels.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,8 +14,18 @@ namespace GroceryService.DAL
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Beer>().HasKey("Id");
+            modelBuilder.Entity<Sale>().HasKey("Id");
+            modelBuilder.Entity<Discounts>().HasKey("Timestamp");
+        }
+
         public DbSet<Beer> Beers { get; set; }
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Discounts> Discounts { get; set; }
+
     }
 }

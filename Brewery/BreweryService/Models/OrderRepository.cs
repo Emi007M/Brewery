@@ -43,7 +43,7 @@ namespace BreweryService.Models
             Order o = new Order(beerId, clientId, amount, price, discount);
             //if success, return order id
             if (Add(o))
-                return o.Id;
+                return o.Amount;
             return -1;
         }
 

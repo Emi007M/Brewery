@@ -132,7 +132,7 @@ namespace BreweryService.Controllers
 
                 return Json(results);
             }
-            return null;
+            return BadRequest();
         }
     }
 }

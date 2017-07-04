@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Brewery", "Brewery", "{9BBC592B-7C3B-438E-83CB-920C3A97B320}"
 EndProject
@@ -11,9 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreweryWebApp", "Brewery\Br
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grocery", "Grocery", "{72E2B5E5-872E-4728-B208-8D895EE7AB87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryService", "Grocery\GroceryService\GroceryService.csproj", "{0EA41A8C-93F8-421C-9A35-721823E2B7C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroceryService", "Grocery\GroceryService\GroceryService.csproj", "{0EA41A8C-93F8-421C-9A35-721823E2B7C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryApp", "Grocery\GroceryApp\GroceryApp.csproj", "{66D9FA69-C9CF-4CAE-A1FA-0A24E4E6DE1A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0EA41A8C-93F8-421C-9A35-721823E2B7C8} = {0EA41A8C-93F8-421C-9A35-721823E2B7C8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryModels", "Grocery\GroceryModels\GroceryModels.csproj", "{DCA7B5AA-769E-4547-932C-9603EACF3032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +42,10 @@ Global
 		{66D9FA69-C9CF-4CAE-A1FA-0A24E4E6DE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D9FA69-C9CF-4CAE-A1FA-0A24E4E6DE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D9FA69-C9CF-4CAE-A1FA-0A24E4E6DE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCA7B5AA-769E-4547-932C-9603EACF3032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA7B5AA-769E-4547-932C-9603EACF3032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCA7B5AA-769E-4547-932C-9603EACF3032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCA7B5AA-769E-4547-932C-9603EACF3032}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +55,6 @@ Global
 		{9360B8CF-F8F6-48C1-A308-889EFAAC1091} = {9BBC592B-7C3B-438E-83CB-920C3A97B320}
 		{0EA41A8C-93F8-421C-9A35-721823E2B7C8} = {72E2B5E5-872E-4728-B208-8D895EE7AB87}
 		{66D9FA69-C9CF-4CAE-A1FA-0A24E4E6DE1A} = {72E2B5E5-872E-4728-B208-8D895EE7AB87}
+		{DCA7B5AA-769E-4547-932C-9603EACF3032} = {72E2B5E5-872E-4728-B208-8D895EE7AB87}
 	EndGlobalSection
 EndGlobal

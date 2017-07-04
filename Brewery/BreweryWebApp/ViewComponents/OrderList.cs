@@ -23,7 +23,7 @@ namespace BreweryWebApp.ViewComponents
 
         public static async Task<List<Order>> GetItemsAsync()
         {
-            var apiRequestUri = new Uri("http://localhost:65320/api/client/orders");
+            var apiRequestUri = new Uri("http://localhost:52856/api/client/orders");
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
@@ -41,7 +41,7 @@ namespace BreweryWebApp.ViewComponents
 
         //public static async Task<OverallMoney> GetOverallMoneyAsync()
         //{
-        //    var apiRequestUri = new Uri("http://localhost:65320/api/beer/overall");
+        //    var apiRequestUri = new Uri("http://localhost:52856/api/beer/overall");
         //    using (var client = new HttpClient())
         //    {
         //        var stringResponse = await client.GetStringAsync(apiRequestUri);
@@ -53,7 +53,7 @@ namespace BreweryWebApp.ViewComponents
 
         //public static async task<overallmoney> invokeproduction()
         //{
-        //    var apirequesturi = new uri("http://localhost:65320/api/beer/produce");
+        //    var apirequesturi = new uri("http://localhost:52856/api/beer/produce");
         //    using (var client = new httpclient())
         //    {
         //        var stringresponse = await client.getstringasync(apirequesturi);

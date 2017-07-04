@@ -63,7 +63,7 @@ namespace BreweryWebApp.Controllers
             //get beer of id
             //Beer b =
             Beer b;
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer/" + pk);
+            var apiRequestUri = new Uri("http://localhost:52856/api/beer/" + pk);
 
             using (var client = new HttpClient())
             {
@@ -104,7 +104,7 @@ namespace BreweryWebApp.Controllers
             // Wrap our JSON inside a StringContent which then can be used by the HttpClient class
             var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
-            apiRequestUri = new Uri("http://localhost:65320/api/beer/" + pk);
+            apiRequestUri = new Uri("http://localhost:52856/api/beer/" + pk);
 
             using (var client = new HttpClient())
             {

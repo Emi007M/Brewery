@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-using GroceryService.Models;
+using GroceryModels.Models;
 
 namespace GroceryService.Controllers
 {
@@ -34,9 +34,12 @@ namespace GroceryService.Controllers
                 if (item.Value > 0)
                 {
                     var beer = _context.Beers.Find(item.Key);
-                    beer.InStore += item.Value;
+                    beer.InStore += (int)item.Value;
+                    _context.Beers.Update(beer);
                 }
             }
+
+            await _context.SaveChangesAsync();
 
             return response;
         }
@@ -53,6 +56,8 @@ namespace GroceryService.Controllers
                 discounts.Timestamp = DateTime.Now;
 
                 await _context.Discounts.AddAsync(discounts);
+                await _context.SaveChangesAsync();
+
             }
 
             return discounts.GetDiscount(count);

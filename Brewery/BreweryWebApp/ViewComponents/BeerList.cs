@@ -25,7 +25,7 @@ namespace BreweryWebApp.ViewComponents
 
         public static async Task<List<Beer>> GetItemsAsync()
         {
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer");
+            var apiRequestUri = new Uri("http://localhost:52856/api/beer");
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
@@ -43,7 +43,7 @@ namespace BreweryWebApp.ViewComponents
 
         public static async Task<OverallMoney> GetOverallMoneyAsync()
         {
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer/overall");
+            var apiRequestUri = new Uri("http://localhost:52856/api/beer/overall");
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
@@ -54,7 +54,7 @@ namespace BreweryWebApp.ViewComponents
 
         public static async Task<OverallMoney> InvokeProduction()
         {
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer/produce");
+            var apiRequestUri = new Uri("http://localhost:52856/api/beer/produce");
             using (var client = new HttpClient())
             {
                 var stringResponse = await client.GetStringAsync(apiRequestUri);
@@ -65,7 +65,7 @@ namespace BreweryWebApp.ViewComponents
 
         public static async Task<Beer> AddNewBeerType() //nie działa. sam post wysłany z postmana działa, a tu nic się nie robi
         {
-            var apiRequestUri = new Uri("http://localhost:65320/api/beer");
+            var apiRequestUri = new Uri("http://localhost:52856/api/beer");
 
             using (var client = new HttpClient())
             {

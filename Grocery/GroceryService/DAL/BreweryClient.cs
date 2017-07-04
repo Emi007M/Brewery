@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
-using GroceryService.Models;
+using GroceryModels.Models;
 
 namespace GroceryService.DAL
 {
