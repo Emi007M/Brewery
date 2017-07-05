@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using System.IO;
 
 namespace BreweryService
@@ -10,7 +11,7 @@ namespace BreweryService
         {
 			var config = new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
-				.AddCommandLine(args)
+                .AddCommandLine(args)
 				.AddEnvironmentVariables(prefix: "ASPNETCORE_")
 				.AddJsonFile("hosting.json", optional: true)
 				.Build();
