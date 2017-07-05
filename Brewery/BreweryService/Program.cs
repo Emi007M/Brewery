@@ -8,7 +8,15 @@ namespace BreweryService
     {
         public static void Main(string[] args)
         {
+			var config = new ConfigurationBuilder()
+				.SetBasePath(Directory.GetCurrentDirectory())
+				.AddCommandLine(args)
+				.AddEnvironmentVariables(prefix: "ASPNETCORE_")
+				.AddJsonFile("hosting.json", optional: true)
+				.Build();
+			
             var host = new WebHostBuilder()
+				.UseConfiguration(config)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
