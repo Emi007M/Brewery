@@ -172,5 +172,18 @@ namespace GroceryApp
                 SalesInfos = (await SalesInfo.CreateSalesInfo(Beers, Sales)).ToList();
             } catch { }
         }
+
+        private async void SendStats_Click(object sender, RoutedEventArgs e)
+        {
+            SendStats.IsEnabled = false;
+            try
+            {
+                await _client.SendSalesInfo(SalesInfos);
+            }
+            catch { }
+
+            SendStats.IsEnabled = true;
+
+        }
     }
 }

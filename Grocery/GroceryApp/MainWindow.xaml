@@ -124,15 +124,22 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ListView SelectionMode="Single" x:Name="BeerStatsList" Grid.Column="0" Grid.Row="0" SelectionChanged="BeerStatsList_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Type}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="32"/>
+                    </Grid.RowDefinitions>
+                    <ListView SelectionMode="Single" Grid.Row="0"  x:Name="BeerStatsList" SelectionChanged="BeerStatsList_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Type}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button x:Name="SendStats" Grid.Row="1" Click="SendStats_Click">Send all stats</Button>
+                </Grid>
                 <StackPanel Grid.Column="1">
                     <Label>Beer</Label>
                     <TextBlock x:Name="StatsBeerName"></TextBlock>
