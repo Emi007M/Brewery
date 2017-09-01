@@ -102,9 +102,8 @@ namespace BreweryService.Controllers
 
         //POST /api/client/info
         [HttpPost("info")]
-        public IActionResult UpdateInfo(long id, [FromBody] AuthorizedObject<List<ClientInfoFromShop>> item)
+        public IActionResult UpdateInfo([FromBody] AuthorizedObject<List<ClientInfoFromShop>> item)
         {
-
             if (item == null)
             {
                 return Json(new { success = 0 });
@@ -115,8 +114,9 @@ namespace BreweryService.Controllers
             if (client != null && _clientRepository.IsKeyClientValid(client.Id, item.ClientKey))
             {
                 client.Info = item.Object;
+                return Json(new { success = 1 });
             }
-            return Json(new { success = 1 });
+            return Json(new { success = 0 });
         }
 
         //POST /api/client/orders

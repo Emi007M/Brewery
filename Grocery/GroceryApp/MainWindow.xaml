@@ -51,7 +51,7 @@
                 </ListView>
                 <Grid Grid.Column="1" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="SaleAmountBox" Width="200"></TextBox>
+                        <TextBox x:Name="SaleAmountBox" Width="200" Text="0"></TextBox>
                         <Button x:Name="SellButton" Click="SellButton_Click">Sell</Button>
                     </StackPanel>
                 </Grid>
@@ -107,7 +107,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBox Grid.Column="0" Grid.Row="1" x:Name="OrderAmountBox"></TextBox>
+                <TextBox Grid.Column="0" Grid.Row="1" x:Name="OrderAmountBox" Text="0"></TextBox>
                 <Grid Grid.Column="1" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -124,8 +124,12 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Stretch">
-                    <ListView SelectionMode="Single" x:Name="BeerStatsList" VerticalAlignment="Stretch" Height="Auto" SelectionChanged="BeerStatsList_SelectionChanged">
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="32"/>
+                    </Grid.RowDefinitions>
+                    <ListView SelectionMode="Single" Grid.Row="0"  x:Name="BeerStatsList" SelectionChanged="BeerStatsList_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -134,8 +138,8 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button x:Name="SendStats" Click="SendStats_Click">Send stats</Button>
-                </StackPanel>
+                    <Button x:Name="SendStats" Grid.Row="1" Click="SendStats_Click">Send all stats</Button>
+                </Grid>
                 <StackPanel Grid.Column="1">
                     <Label>Beer</Label>
                     <TextBlock x:Name="StatsBeerName"></TextBlock>

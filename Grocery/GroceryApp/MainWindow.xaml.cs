@@ -186,5 +186,18 @@ namespace GroceryApp
             }
             catch { }
         }
+
+        private async void SendStats_Click(object sender, RoutedEventArgs e)
+        {
+            SendStats.IsEnabled = false;
+            try
+            {
+                await _client.SendSalesInfo(SalesInfos);
+            }
+            catch { }
+
+            SendStats.IsEnabled = true;
+
+        }
     }
 }
