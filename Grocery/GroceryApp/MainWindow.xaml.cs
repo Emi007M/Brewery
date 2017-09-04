@@ -179,16 +179,6 @@ namespace GroceryApp
 
         private async void SendStats_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-
-                await _client.SendSalesInfo(SalesInfos);
-            }
-            catch { }
-        }
-
-        private async void SendStats_Click(object sender, RoutedEventArgs e)
-        {
             SendStats.IsEnabled = false;
             try
             {
