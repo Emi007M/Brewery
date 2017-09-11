@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BreweryService.Models
@@ -10,31 +11,6 @@ namespace BreweryService.Models
         public BeerRepository(BeerContext context)
         {
             _context = context;
-
-            if (_context.Beers.Count() == 0) //for now initial db of beers
-            {
-                Add(new Beer
-                {
-                    Type = "Pale Ale",
-                    // Amount = 400,
-                    ProductionDaily = 200,
-                    Price = 5
-                });
-                Add(new Beer
-                {
-                    Type = "Dutch Lager",
-                    //  Amount = 500,
-                    ProductionDaily = 300,
-                    Price = 7
-                });
-                Add(new Beer
-                {
-                    Type = "Scotch Stout",
-                    //  Amount = 300,
-                    ProductionDaily = 200,
-                    Price = 10
-                });
-            }
         }
 
         public void Add(Beer item)

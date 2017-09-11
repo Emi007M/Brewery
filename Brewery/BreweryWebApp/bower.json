@@ -6,8 +6,6 @@
     "jquery": "2.2.0",
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.6",
-    "Microsoft.AspNet.WebApi.Client": "5.2.2-rc",
-    "System.Runtime.Serialization.Xml": "*",
     "components-font-awesome": "4.7.0"
   }
 }

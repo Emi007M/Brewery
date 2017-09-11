@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -20,14 +21,15 @@ namespace BreweryService
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public static IConfigurationRoot Configuration { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // requires using BreweryService.Model; and
         // using Microsoft.EntityFrameworkCore;
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BeerContext>(opt => opt.UseInMemoryDatabase());
+            ;
+            services.AddDbContext<BeerContext>(opt => opt.UseSqlite(Configuration.GetValue<string>("DatabaseConnectionString", "Data Source=brewery.db")));
 
             services.AddMvc();
 

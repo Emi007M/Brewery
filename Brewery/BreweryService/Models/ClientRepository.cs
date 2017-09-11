@@ -1,4 +1,5 @@
 ﻿using CryptoHelper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +13,6 @@ namespace BreweryService.Models
         public ClientRepository(BeerContext context)
         {
             _context = context;
-
-            //setting same discounts to all
-         //   Client.GlobalDiscounts = new Discounts();
-
-
-            if (_context.Clients.Count() == 0) //for now initial db of beers
-            {
-                Add(new Client("client_1", "admin123"));
-                Add(new Client("client_2", "pswd"));
-                Add(new Client("client_3", "123QWE"));
-                Add(new Client("client_4", "1q2w3e4r"));
-
-            }
-
-           
-
         }
 
         public void Add(Client item)
@@ -38,12 +23,12 @@ namespace BreweryService.Models
 
         public Client Find(long key)
         {
-            return _context.Clients.FirstOrDefault(t => t.Id == key);
+            return _context.Clients.Include(c => c.Discounts).Include(c => c.Info).FirstOrDefault(t => t.Id == key);
         }
 
         public IEnumerable<Client> GetAll()
         {
-            return _context.Clients.ToList();
+            return _context.Clients.Include(c => c.Discounts).Include(c => c.Info).ToList();
         }
 
         public void Remove(long key)
@@ -68,19 +53,5 @@ namespace BreweryService.Models
         {
             return _context.Clients.FirstOrDefault(t => t.Name == clientName);
         }
-
-        //public OverallMoney GetOverallMoney()
-        //{
-        //    return new OverallMoney(_context);
-
-        //}
-
-        //public void ProduceAll()
-        //{
-        //    _context.ProduceAll();
-        //    _context.SaveChanges();
-        //}
-
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BreweryService.Models
@@ -10,12 +11,32 @@ namespace BreweryService.Models
         public OrderRepository(BeerContext context)
         {
             _context = context;
+            var rand = new Random();
 
             //setting same discounts to all
             // Client.GlobalDiscounts = new Discounts();
 
             if (_context.Orders.Count() == 0) //for now initial db of beers
             {
+                Console.WriteLine("Orders");
+                for (int i = 0; i < TestCfg.Orders; i++)
+                {
+                    var beerId = rand.Next(0, TestCfg.Beers - 1);
+                    var clientId = rand.Next(0, TestCfg.Clients - 1);
+                    var amount = rand.Next(TestCfg.MinOrder, TestCfg.MaxOrder);
+
+                    Beer b = _context.Beers.Find(beerId);
+                    if (b == null) continue;
+
+                    float price = b.Price;
+                    int discount = _context.Clients.Find(clientId).Discounts.GetDiscount(amount);
+
+                    Order o = new Order(beerId, clientId, amount, price, discount);
+                    _context.Orders.Add(o);
+
+                    Console.WriteLine($"{i}/{TestCfg.Orders}");
+                }
+                _context.SaveChanges();
             }
         }
 

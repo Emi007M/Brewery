@@ -29,13 +29,12 @@ namespace BreweryService.Models
         /// sth like 1Q73TU
         /// </summary>
         public string Key { get; set; }
-        public Discounts Discounts { get; set; }
 
-         //   public static Discounts GlobalDiscounts { get; set; }
-         /// <summary>
-         /// data taken from client's shop service
-         /// </summary>
+        public virtual Discounts Discounts { get; set; }
 
-         public List <ClientInfoFromShop> Info { get; set; }
+        /// <summary>
+        /// data taken from client's shop service
+        /// </summary>
+        public List <ClientInfoFromShop> Info { get; set; }
     }
 }
